@@ -52,7 +52,7 @@
     height: 70%;
     margin: 0 5%;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
 }
 .headerContent h3, .headerContent p {
     transition: 0.5s;
@@ -61,6 +61,10 @@
 .headerContent h3 {
     font-size: 3rem;
     margin: 0;
+}
+
+.enlargedHeader .headerContent h3, .enlargedHeader .headerContent p {
+    transition: 0.25s ease-out;
 }
 
 .enlargedHeader .headerContent h3 {
@@ -90,6 +94,7 @@
 
 .enlargedHeader .header {
     height: 70vh;
+    transition: 0.25s ease-out;
 }
 
 .enlargedHeader .headerContent {
@@ -118,6 +123,8 @@
     transition: 0.2s  ease-in-out;
     text-underline-offset: 2px;
     text-decoration: solid underline 0.5px white;
+
+    cursor: pointer;
   }
   
   .button:hover {

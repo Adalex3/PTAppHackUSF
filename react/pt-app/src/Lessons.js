@@ -48,14 +48,14 @@ function Lessons() {
     }, 1000);
 
     // Automatically cycle through exercises every 10 seconds.
-    const interval = setInterval(() => {
-      showNextExercise();
-    }, 10000);
+    // const interval = setInterval(() => {
+    //   showNextExercise();
+    // }, 10000);
 
     // Cleanup timers on component unmount.
     return () => {
       clearTimeout(initialTimeout);
-      clearInterval(interval);
+      // clearInterval(interval);
     };
   }, []); // Runs once on mount
 
@@ -74,7 +74,7 @@ function Lessons() {
       <div className='visualContent'>
         <img src="http://localhost:5001/video" alt="Exercise Video" />
       </div>
-        <a className='button'>I'm done!</a>
+        <a className='button' onClick={showNextExercise}>I'm done!</a>
       </div>
     </div>
   );
