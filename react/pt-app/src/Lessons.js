@@ -9,6 +9,8 @@ function Lessons() {
   const defaultDescription = "Here is some information about the exercise that you are doing";
   const defaultImage = 'logo.svg'; // Fallback or initial image
 
+  const [isButtonHidden, setIsButtonHidden] = useState(true);
+
   // State to track which exercise is currently active.
   // We start with -1 so that the first exercise is at index 0.
   const [exerciseIndex, setExerciseIndex] = useState(-1);
@@ -26,6 +28,7 @@ function Lessons() {
 
   // Function to transition to the next exercise.
   const showNextExercise = () => {
+    setIsButtonHidden(true)
     const nextIndex = exerciseIndex + 1;
     if (nextIndex < exercises.length) {
       const nextExercise = exercises[nextIndex];
@@ -36,6 +39,11 @@ function Lessons() {
       // After 3 seconds, revert to normal mode (show short description).
       setTimeout(() => {
         setIsEnlarged(false);
+
+        // show button after a few more seconds
+        setTimeout(() => {
+          setIsButtonHidden(false);
+        },10000)
       }, 3000);
     }
   };
@@ -45,7 +53,7 @@ function Lessons() {
     // Start with a brief delay before showing the first exercise.
     const initialTimeout = setTimeout(() => {
       showNextExercise();
-    }, 1000);
+    }, 100);
 
     // Automatically cycle through exercises every 10 seconds.
     // const interval = setInterval(() => {
@@ -74,7 +82,7 @@ function Lessons() {
       <div className='visualContent'>
         <img src="http://localhost:5001/video" alt="Exercise Video" />
       </div>
-        <a className='button' onClick={showNextExercise}>I'm done!</a>
+        <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
       </div>
     </div>
   );
