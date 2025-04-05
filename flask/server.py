@@ -27,6 +27,7 @@ def set_pose():
 @app.route('pose_feedback')
 def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
+    # This should return the position and angle and other info about every joint, for the frontend to process
     return jsonify({'status':'error'}) # Default return
 
     
