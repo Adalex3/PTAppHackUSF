@@ -18,6 +18,7 @@ def generate_frames():
             yield(b'--frame\r\n'
                         b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+'''
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5, model_complexity=0) as holistic:
     while cap.isOpened():
         ret, frame = cap.read()
@@ -65,6 +66,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
         if cv2.waitKey(27) == ord('\x1b'):
             break
-
-cap.release()
-cv2.destroyAllWindows()
+'''
+# cap.release()
+# cv2.destroyAllWindows()
