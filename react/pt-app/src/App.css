@@ -9,12 +9,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    /* animation: App-logo-rotate infinite 8.16199s ease-in-out, App-logo-scale 5s ease-in-out infinite; */
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #eee;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,17 +22,68 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  align-items: start;
+  padding-top: 5%;
+}
+
+.App-header div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+h1 {
+  color: black;
+  margin:0;
+  font-size: min(7.5vw,7rem);
+}
+h4 {
+  color: black;
+  font-size: 2rem;
+  margin: 0;
+}
+p {
+  color: black;
+  font-size: 1.3rem;
+  margin: 0;
+  text-align: left;
+}
+
+.desc {
+  margin-top: 5%;
+  max-width: 800px;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes App-logo-rotate {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-5deg);
   }
+}
+
+@keyframes App-logo-scale {
+  from {
+    scale: 97.5%;
+  }
+  50% {
+    scale: 102.5%;
+  }
+  to {
+    scale: 97.5%;
+  }
+  
 }
