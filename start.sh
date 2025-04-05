@@ -3,7 +3,7 @@
 # Navigate to Flask folder and run Flask server
 cd flask
 echo "Starting Flask server..."
-python3 server.py &
+python server.py &
 FLASK_PID=$!
 cd ..
 
