@@ -128,3 +128,12 @@
   .button:active {
     scale: 95%;
   }
+
+  .visualContent img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    box-shadow: -5px -5px 10px rgba(0,0,0,0.5), inset 5px 5px 10px red;
+  }

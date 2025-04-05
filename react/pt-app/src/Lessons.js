@@ -71,10 +71,10 @@ function Lessons() {
         </div>
       </div>
       <div className='mainContent'>
-        <div className='visualContent'>
-          {/* Visual content goes here */}
-        </div>
-        <a className='button'>End</a>
+      <div className='visualContent'>
+        <img src="http://localhost:5001/video" alt="Exercise Video" />
+      </div>
+        <a className='button'>I'm done!</a>
       </div>
     </div>
   );
