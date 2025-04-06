@@ -14,13 +14,16 @@
     transition: 0.5s;
 }
 
-.visualContent {
+.lessons .visualContent {
     aspect-ratio: 1.7;
     height: 100vh;
     max-height: 70vh;
     max-width: 80vw;
     background-color: gray;
     margin-top: calc(17.5vh + 6.25vh);
+
+    display: flex;
+    flex-direction: row;
 }
 
 .header {
@@ -136,13 +139,14 @@
     scale: 95%;
   }
 
-  .visualContent img {
+  .lessons .visualContent img {
     position: relative;
-    width: 100%;
+    width: 40vw;
     height: 100%;
     object-fit: cover;
     
     box-shadow: -5px -5px 10px rgba(0,0,0,0.5), inset 5px 5px 10px red;
+
   }
 
   #done-btn {
@@ -153,4 +157,10 @@
 
   .button.hidden {
     opacity: 0;
+  }
+
+  .feedbackDiv {
+    min-width: 40vw;
+    height: 100%;
+    background-color: red;
   }

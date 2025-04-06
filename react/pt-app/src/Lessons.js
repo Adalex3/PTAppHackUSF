@@ -82,7 +82,7 @@ function Lessons() {
       <div className='mainContent'>
       <div className='visualContent'>
         <img src="http://localhost:5001/video" alt="Exercise Video" />
-        <VideoPopup arrowPercent={{ x: 0.5, y: 0.4}} bubbleText="More information here" />
+        <div className='feedbackDiv'></div>
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
       </div>
