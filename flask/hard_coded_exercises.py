@@ -175,40 +175,40 @@ EXERCISES: List[Exercise] = [
                 ]
             ),
             PoseLandmark.LEFT_ELBOW: JointAngle(
-                value=45,
+                value=170,
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=30,
+                        threshold=140,
                         long_message=r"You need to extend your arms as far as possible.",
                         short_message=r"Extend arms",
-                        severity=6.0
+                        severity=5.0
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=60,
+                        threshold=180,
                         long_message=r"Your arms should be grasping your feet",
                         short_message=r"Arms to feet",
-                        severity=5.5
+                        severity=9.0
                     ),
                 ]
             ),
             PoseLandmark.RIGHT_ELBOW: JointAngle(
-                value=45,
+                value=170,
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=30,
+                        threshold=140,
                         long_message=r"You need to extend your arms as far as possible.",
                         short_message=r"Extend arms",
-                        severity=6.0
+                        severity=5.0
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=60,
+                        threshold=180,
                         long_message=r"Your arms should be grasping your feet",
                         short_message=r"Arms to feet",
-                        severity=5.5
+                        severity=9.0
                     ),
                 ]
             ),

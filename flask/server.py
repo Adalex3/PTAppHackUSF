@@ -229,7 +229,7 @@ def get_feedback_data(exercise_name: str):
                 
                 current_issues.append({
                     "joint": joint.name,
-                    "description": ec.description,
+                    "description": ec.long_message,
                     "position": position,
                     "frame": current_frame,
                     "severity": ec.severity
@@ -301,7 +301,7 @@ def feedback():
 @app.route('/squat_json')
 def squat_json():
     try:
-        with open('squat_issues.json', 'r') as f:
+        with open('posture_issues.json', 'r') as f:
             data = f.read()
         return Response(data, mimetype='application/json')
     except FileNotFoundError:
