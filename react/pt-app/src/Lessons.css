@@ -89,12 +89,13 @@
     transition: 0.5s;
     font-weight: bold;
     color: #FFB200;
-    padding:3%;
+    padding:1%;
+    margin-left: 25;
 }
 
 .headerContent h3 {
     font-size: 3rem;
-    margin: 0;
+    margin: 10%;
 }
 
 .enlargedHeader .headerContent h3, .enlargedHeader .headerContent p {

@@ -9,7 +9,7 @@ function Lessons() {
   // Default header content before transitioning to any exercise
   const defaultTitle = "Let's begin!";
   const defaultDescription = "Here is some information about the exercise that you are doing";
-  const defaultImage = 'logo.svg'; // Fallback or initial image
+  // const defaultImage = 'logo.svg'; // Fallback or initial image
 
   const [isButtonHidden, setIsButtonHidden] = useState(true);
 
@@ -26,7 +26,7 @@ function Lessons() {
     title: defaultTitle,
     shortDescription: defaultDescription,
     longDescription: defaultDescription,
-    image: defaultImage,
+    // image: defaultImage,
   });
 
 
