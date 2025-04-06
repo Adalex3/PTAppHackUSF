@@ -7,6 +7,10 @@ import time
 
 cap = cv2.VideoCapture(1)
 
+# Global variables for recording
+recording_active = False
+recorded_frames = []
+
 NEEDED_LANDMARKS = [
     mp_holistic.PoseLandmark.LEFT_SHOULDER,
     mp_holistic.PoseLandmark.RIGHT_SHOULDER,
@@ -118,6 +122,8 @@ def generate_frames():
                 cap.release()
                 break
             else:
+                if recording_active:
+                    recorded_frames.append(img.copy())
                 fail, buffer=cv2.imencode('.jpg', img)
                 img=buffer.tobytes()
                 yield (b'--frame\r\n'
