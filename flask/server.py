@@ -103,15 +103,20 @@ def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
     # This should return the position and angle and other info about every joint, for the frontend to process
     
-    feedback = feedback()
+    feedback = get_feedback_data().get_json()
+
+    print(feedback)
 
     color = 'green'
+    bigText = 'GOOD'
     if (feedback["severity"] > 7):
-        color = 'orange'
-    elif (feedback["severity"] > 7):
         color = 'red'
+        bigText = 'POOR'
+    elif (feedback["severity"] > 4):
+        color = 'orange'
+        bigText = 'FAIR'
 
-    # jsonify({'bigText': 'GREAT'},{'smallText': },{'color': color},{'textColor':'white'})
+    return jsonify({'bigText': bigText},{'smallText': feedback['small_message']},{'color': color},{'textColor':'white'})
 
     if(random.random() < 0.3):
         return jsonify({'bigText': 'GREAT'},{'smallText': 'Keep stretching those calves!'},{'color': 'green'},{'textColor':'white'})
@@ -131,8 +136,7 @@ def angles():
         return jsonify({'angles': None})
     
 
-@app.route('/feedback')
-def feedback():
+def get_feedback_data():
     import os, json
     from flask import jsonify
     from mediapipe.python.solutions.pose import PoseLandmark
@@ -215,6 +219,10 @@ def feedback():
         "small_message": error_case.short_message,
         "severity": error_case.severity
     })
+
+@app.route('/feedback')
+def feedback():
+    return get_feedback_data()
 
 @app.route('/squat_json')
 def squat_json():

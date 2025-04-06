@@ -77,18 +77,25 @@ EXERCISES: List[Exercise] = [
         ideal_joint_values={
             # For demonstration, using PoseLandmark values that best approximate the example.
             PoseLandmark.RIGHT_KNEE: JointAngle(
-                value=77.5,
+                value=100,
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=96.5,
+                        threshold=140,
+                        long_message=r"Start squatting",
+                        short_message=r"Start squatting",
+                        severity=8.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=116.5,
                         long_message=r"Your squat needs to be lower",
                         short_message=r"Squat lower",
-                        severity=4.0
+                        severity=4.2
                     ),
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=72.5,
+                        threshold=85.5,
                         long_message=r"Your squat is too low; you risk falling backward.",
                         short_message=r"Squat less",
                         severity=7.0
@@ -96,18 +103,25 @@ EXERCISES: List[Exercise] = [
                 ]
             ),
             PoseLandmark.LEFT_KNEE: JointAngle(
-                value=77.5,
+                value=100,
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=82.5,
+                        threshold=140,
+                        long_message=r"Start squatting",
+                        short_message=r"Start squatting",
+                        severity=8.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=116.5,
                         long_message=r"Your squat needs to be lower",
                         short_message=r"Squat lower",
                         severity=4.1
                     ),
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=72.5,
+                        threshold=85.5,
                         long_message=r"Your squat is too low; you risk falling backward.",
                         short_message=r"Squat less",
                         severity=7.1
