@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import exercises from './exercises.js'; // Import the exercise objects
 import './Feedback.css';
 import logo from './logo.svg';
@@ -8,13 +8,16 @@ function Feedback() {
 
     // TO BE CHANGED LATER
     const totalSeconds = 60;
+    const [scrubPos, setScrubPos] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const requestRef = useRef();
+    const startTimeRef = useRef();
+    const lastScrubPos = useRef(0);
 
     const mapRange = (a, b, c, d, e) => {
         return d + ((a - b) * (e - d)) / (c - b);
-    };
-
-    const [scrubPos, setScrubPos] = useState(0.7621);
-    const [isDragging, setIsDragging] = useState(false);
+    }
   
     const handleScrub = (e) => {
         let viewportWidth = window.innerWidth;
@@ -25,8 +28,11 @@ function Feedback() {
     };
   
     const handleMouseDown = (e) => {
-      setIsDragging(true);
-      handleScrub(e);
+      if(e.clientX < window.innerWidth*0.8) {
+        setIsPlaying(false);
+        setIsDragging(true);
+        handleScrub(e);
+      }
     };
   
     const handleMouseUp = () => setIsDragging(false);
@@ -44,6 +50,55 @@ function Feedback() {
       };
     }, [isDragging]);
 
+    const animate = (timestamp) => {
+        if (!startTimeRef.current) startTimeRef.current = timestamp;
+        const elapsed = (timestamp - startTimeRef.current) / 1000;
+        const progress = Math.min(lastScrubPos.current + elapsed / totalSeconds, 1);
+        setScrubPos(progress);
+        if (progress < 1) {
+          requestRef.current = requestAnimationFrame(animate);
+        } else {
+          setIsPlaying(false);
+        }
+      };
+    
+      useEffect(() => {
+        if (isPlaying) {
+          startTimeRef.current = null;
+          lastScrubPos.current = scrubPos;
+          requestRef.current = requestAnimationFrame(animate);
+        } else {
+          cancelAnimationFrame(requestRef.current);
+        }
+        return () => cancelAnimationFrame(requestRef.current);
+      }, [isPlaying]);
+    
+      const togglePlay = () => {
+        if(scrubPos == 1) {
+            setScrubPos(0);
+        }
+        setIsPlaying((prev) => !prev)
+      };
+
+      // SPACEBAR and ARROW
+      useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            togglePlay();
+          } else if (e.code === 'ArrowRight') {
+            setIsPlaying(false);
+            setScrubPos((pos) => Math.min(pos + 1 / totalSeconds, 1));
+          } else if (e.code === 'ArrowLeft') {
+            setIsPlaying(false);
+            setScrubPos((pos) => Math.max(pos - 1 / totalSeconds, 0));
+          }
+        };
+      
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [scrubPos]);
+
   return (
     <div className={`feedback`}>
       <div className='header'>
@@ -58,6 +113,7 @@ function Feedback() {
         <div className='scrub' onMouseDown={handleMouseDown}>
             <div className='baseLine'></div>
             <div className='watchedLine' style={{ width: `calc(80vw * ${scrubPos})` }}></div>
+            <button className="playPause" onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
         </div>
       </div>
       </div>

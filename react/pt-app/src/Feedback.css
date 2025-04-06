@@ -187,3 +187,12 @@
     height: 5px;
     background-color: green;
   }
+
+
+  .playPause {
+    position: absolute;
+    right: 5vw;
+    width: 4vw;
+    height: 4vw;
+    top: 0.5vw;
+  }
