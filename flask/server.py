@@ -1,12 +1,23 @@
 from flask import Flask, Response, request, jsonify
 from flask_cors import CORS
-from start import generate_frames
+from start import generate_frames as original_generate_frames
+
+latest_avg_pos = None
+
+def generate_frames():
+    global latest_avg_pos
+    for frame, avg_pos in original_generate_frames():
+        latest_avg_pos = avg_pos
+        yield frame
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 @app.route('/')
 def home():
     return 'Hello, Flask!'
+
+last_frame = None
 
 # Returns the altered video
 @app.route('/video')
@@ -41,6 +52,11 @@ def squat_json():
         return Response(data, mimetype='application/json')
     except FileNotFoundError:
         return jsonify({'error': 'squat_issues.json not found'}), 404
+    
+
+@app.route('/avg_pos')
+def avg_pos():
+    return jsonify({'avg_pos': latest_avg_pos})
     
 
 if __name__ == '__main__':
