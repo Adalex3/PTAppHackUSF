@@ -151,6 +151,14 @@ def get_feedback_data(exercise_name: str):
     if os.path.exists('landmarks.json'):
         with open('landmarks.json', 'r') as f:
             landmarks = json.load(f)
+        # Initialize or load existing issues
+
+    issues_file = 'posture_issues.json'
+    issues_data = {"issues": []}
+    if os.path.exists(issues_file):
+        with open(issues_file, 'r') as f:
+            issues_data = json.load(f)
+
     # If we don't have valid data, return an empty feedback response
     if not angles or not landmarks:
         return jsonify({
@@ -197,25 +205,74 @@ def get_feedback_data(exercise_name: str):
             "severity": 0
         })
     
-    # Iterate over the measured joints and compare to the exercise's error cases.
-    # For each joint, check if any error case is triggered.
-    highest_issue = None  # Tuple: (severity, joint, error_case)
+    # Track current frame (you'll need to implement frame counting in your video processing)
+    current_frame = 0  # This should come from your video processing logic
+    
+    # Iterate over the measured joints and compare to the exercise's error cases
+    highest_issue = None
+    current_issues = []
+    
     for joint, measured_angle in measured.items():
         joint_data = get_joint_angle_from_exercise(exercise, joint)
         for ec in joint_data.error_cases:
             if ec.error_type.compare(measured_angle, ec.threshold):
                 if highest_issue is None or ec.severity > highest_issue[0]:
                     highest_issue = (ec.severity, joint, ec)
+                
+                # Record this issue
+                joint_index = joint.value
+                if joint_index < len(landmarks):
+                    joint_landmark = landmarks[joint_index]
+                    position = [joint_landmark.get("x", 0), joint_landmark.get("y", 0)]
+                else:
+                    position = [0, 0]
+                
+                current_issues.append({
+                    "joint": joint.name,
+                    "description": ec.description,
+                    "position": position,
+                    "frame": current_frame,
+                    "severity": ec.severity
+                })
     
-    # If no error case was triggered, return an empty feedback response.
+    # Check if any of the current issues are continuations of existing issues
+    for issue in current_issues:
+        # Look for matching ongoing issues
+        matching_issue = None
+        for existing_issue in issues_data["issues"]:
+            if (existing_issue["description"] == issue["description"] and 
+                current_frame == existing_issue["startFrame"] + existing_issue["frameCount"]):
+                matching_issue = existing_issue
+                break
+        
+        if matching_issue:
+            # Continue the existing issue
+            matching_issue["frameCount"] += 1
+            matching_issue["positions"].append(issue["position"])
+        else:
+            # Start a new issue
+            new_issue = {
+                "id": len(issues_data["issues"]),
+                "description": issue["description"],
+                "startFrame": current_frame,
+                "frameCount": 1,
+                "positions": [issue["position"]]
+            }
+            issues_data["issues"].append(new_issue)
+    
+    # Save the updated issues data
+    with open(issues_file, 'w') as f:
+        json.dump(issues_data, f, indent=2)
+    
+    # Return feedback for the most severe current issue
     if highest_issue is None:
         return jsonify({
             "position": None,
             "big_message": "",
             "small_message": "",
             "severity": 0
-        })
-    
+    })
+
     # Use the error case with the highest severity.
     _, problematic_joint, error_case = highest_issue
     # Retrieve the 2D position (normalized x and y) of the problematic joint from the landmarks.
@@ -227,7 +284,7 @@ def get_feedback_data(exercise_name: str):
         position = [0, 0]
 
 
-    #  RECORD FUNCTION GOES HEREEEEEE!!!
+    # Record Function Goes Here
     
     # Return the position, large message, small message, and severity as a JSON response.
     return jsonify({
