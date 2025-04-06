@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import exercises from './exercises.js'; // Import the exercise objects
 import './Lessons.css';
 import logo from './logo.svg';
@@ -13,6 +13,8 @@ function Lessons() {
   const [isButtonHidden, setIsButtonHidden] = useState(true);
 
   const [isUserInView, setIsUserInView] = useState(false);
+
+  const [feedback, setFeedback] = useState(null);
 
   // State to track which exercise is currently active.
   // We start with -1 so that the first exercise is at index 0.
@@ -79,6 +81,13 @@ function Lessons() {
   }, []); // Runs once on mount
 
 
+  useEffect(()=>{
+    console.log("FEEDBACK UPDATES!!!")
+    console.log(feedback)
+    console.log("feeld: " + feedback[0].bigText)
+  }, feedback)
+
+
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
@@ -86,6 +95,22 @@ function Lessons() {
         const data = await res.json();
         if (data["in_frame"] != null) {
           setIsUserInView(data["in_frame"]);
+        }
+      } catch (err) {
+        // Optional: log silently or not at all
+        console.error('Fetch failed:', err);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:5001/pose_feedback');
+        const data = await res.json();
+        if (data != null) {
+          setFeedback(data)
         }
       } catch (err) {
         // Optional: log silently or not at all
@@ -159,9 +184,9 @@ function Lessons() {
           <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
           <div className={`notInViewError ${isUserInView ? 'hidden' : ''}`}><p>{`Make sure your entire body is visible!`}</p></div>
         </div>
-        <div className='feedbackDiv'>
-          <h1>READY?</h1>
-          <p>...</p>
+        <div className='feedbackDiv' style={{backgroundColor: feedback[2] != null ? feedback[2].color : 'gray'}}>
+          <h1 style={{color: feedback[2] != null ? feedback[3].textColor : 'black'}}>{feedback[0] != null ? feedback[0].bigText : 'READY?'}</h1>
+          <p style={{color: feedback[2] != null ? feedback[3].textColor : 'black'}}>{feedback[1] != null ? feedback[1].smallText : '...'}</p>
         </div>
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
