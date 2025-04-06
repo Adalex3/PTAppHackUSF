@@ -193,10 +193,11 @@
     transition: transform 0.5s ease;
   }
 
-  #done-btn {
+  .lessons #done-btn {
+    width: 7.5vw;
     position: absolute;
-    right: 15px;
-    bottom: 15px;
+    right: calc(8vw + 20vw - 3.25vw);
+    bottom: 5vh;
   }
 
   .button.hidden {
