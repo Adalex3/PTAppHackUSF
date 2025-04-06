@@ -111,7 +111,7 @@ def pose_data():
     elif (feedback["severity"] > 7):
         color = 'red'
 
-    jsonify({'bigText': 'GREAT'},{'smallText': },{'color': color},{'textColor':'white'})
+    # jsonify({'bigText': 'GREAT'},{'smallText': },{'color': color},{'textColor':'white'})
 
     if(random.random() < 0.3):
         return jsonify({'bigText': 'GREAT'},{'smallText': 'Keep stretching those calves!'},{'color': 'green'},{'textColor':'white'})
@@ -204,6 +204,9 @@ def feedback():
         position = [joint_landmark.get("x", 0), joint_landmark.get("y", 0)]
     else:
         position = [0, 0]
+
+
+    #  RECORD FUNCTION GOES HEREEEEEE!!!
     
     # Return the position, large message, small message, and severity as a JSON response.
     return jsonify({
