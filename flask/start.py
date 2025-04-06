@@ -1,11 +1,27 @@
 import cv2 as cv2
-import mediapipe.python.solutions.hands as mp_hands
 import mediapipe.python.solutions.drawing_utils as drawing
 import mediapipe.python.solutions.drawing_styles as drawing_styles
 import mediapipe.python.solutions.holistic as mp_holistic
 import numpy as np
+import time
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
+
+NEEDED_LANDMARKS = [
+    mp_holistic.PoseLandmark.LEFT_SHOULDER,
+    mp_holistic.PoseLandmark.RIGHT_SHOULDER,
+    mp_holistic.PoseLandmark.LEFT_ELBOW,
+    mp_holistic.PoseLandmark.RIGHT_ELBOW,
+    mp_holistic.PoseLandmark.LEFT_WRIST,
+    mp_holistic.PoseLandmark.RIGHT_WRIST,
+    mp_holistic.PoseLandmark.LEFT_HIP,
+    mp_holistic.PoseLandmark.RIGHT_HIP,
+    mp_holistic.PoseLandmark.LEFT_HEEL,
+    mp_holistic.PoseLandmark.RIGHT_HEEL,
+    mp_holistic.PoseLandmark.RIGHT_KNEE,
+    mp_holistic.PoseLandmark.LEFT_KNEE
+]
+
 
 def generate_frames():
     #reading the camera frame
@@ -107,5 +123,6 @@ def calc_angle(a,b,c):
     
     return angle
 
-def check_if_frame():
-    pass
+def check_if_frame(results):
+    if not results.pose_landmarks:
+        yield False
