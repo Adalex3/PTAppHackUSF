@@ -53,7 +53,7 @@ function Lessons() {
   useEffect(() => {
     // Start with a brief delay before showing the first exercise.
     const initialTimeout = setTimeout(() => {
-      // showNextExercise();
+      showNextExercise();
     }, 100);
 
     // Automatically cycle through exercises every 10 seconds.

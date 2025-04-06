@@ -1,93 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import exercises from './exercises.js'; // Import the exercise objects
-import './Lessons.css';
+import './Feedback.css';
 import logo from './logo.svg';
 import VideoPopup from './components/VideoPopup.js';
 
-function Lessons() {
-  // Default header content before transitioning to any exercise
-  const defaultTitle = "Let's begin!";
-  const defaultDescription = "Here is some information about the exercise that you are doing";
-  const defaultImage = 'logo.svg'; // Fallback or initial image
+function Feedback() {
 
-  const [isButtonHidden, setIsButtonHidden] = useState(true);
+    // TO BE CHANGED LATER
+    const totalSeconds = 60;
 
-  // State to track which exercise is currently active.
-  // We start with -1 so that the first exercise is at index 0.
-  const [exerciseIndex, setExerciseIndex] = useState(-1);
-
-  // State for the current exercise's data. Initially, it uses the default content.
-  const [currentExercise, setCurrentExercise] = useState({
-    title: defaultTitle,
-    shortDescription: defaultDescription,
-    longDescription: defaultDescription,
-    image: defaultImage,
-  });
-
-  // State to control whether the header is in enlarged mode.
-  const [isEnlarged, setIsEnlarged] = useState(false);
-
-  // Function to transition to the next exercise.
-  const showNextExercise = () => {
-    setIsButtonHidden(true)
-    const nextIndex = exerciseIndex + 1;
-    if (nextIndex < exercises.length) {
-      const nextExercise = exercises[nextIndex];
-      setCurrentExercise(nextExercise);
-      setExerciseIndex(nextIndex);
-      // Enlarge header to show the long description.
-      setIsEnlarged(true);
-      // After 3 seconds, revert to normal mode (show short description).
-      setTimeout(() => {
-        setIsEnlarged(false);
-
-        // show button after a few more seconds
-        setTimeout(() => {
-          setIsButtonHidden(false);
-        },10000)
-      }, 3000);
-    }
-  };
-
-  // On component mount, trigger the first exercise and set an interval for subsequent transitions.
-  useEffect(() => {
-    // Start with a brief delay before showing the first exercise.
-    const initialTimeout = setTimeout(() => {
-      // showNextExercise();
-    }, 100);
-
-    // Automatically cycle through exercises every 10 seconds.
-    // const interval = setInterval(() => {
-    //   showNextExercise();
-    // }, 10000);
-
-    // Cleanup timers on component unmount.
-    return () => {
-      clearTimeout(initialTimeout);
-      // clearInterval(interval);
+    const mapRange = (a, b, c, d, e) => {
+        return d + ((a - b) * (e - d)) / (c - b);
     };
-  }, []); // Runs once on mount
+
+    const [scrubPos, setScrubPos] = useState(0.7621);
+    const [isDragging, setIsDragging] = useState(false);
+  
+    const handleScrub = (e) => {
+        let viewportWidth = window.innerWidth;
+      let newPos = mapRange(e.clientX, viewportWidth*0.1,viewportWidth*0.9,0,1);
+      newPos = Math.min(Math.max(newPos, 0), 1); // clamp between 0 and 1
+
+      setScrubPos(newPos);
+    };
+  
+    const handleMouseDown = (e) => {
+      setIsDragging(true);
+      handleScrub(e);
+    };
+  
+    const handleMouseUp = () => setIsDragging(false);
+  
+    const handleMouseMove = (e) => {
+      if (isDragging) handleScrub(e);
+    };
+  
+    useEffect(() => {
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }, [isDragging]);
 
   return (
-    <div className={`lessons ${isEnlarged ? 'enlargedHeader' : ''}`}>
+    <div className={`feedback`}>
       <div className='header'>
-        <div className='headerContent'>
-          {/* Header title updates based on the current exercise */}
-          <h3 className='start'>{currentExercise.title}</h3>
-          <img src={currentExercise.image} alt={currentExercise.title} />
-          {/* Depending on the enlargement state, show the long or short description */}
-          <p>{isEnlarged ? currentExercise.longDescription : currentExercise.shortDescription}</p>
-        </div>
+        <p>Feedback</p>
       </div>
       <div className='mainContent'>
       <div className='visualContent'>
         <img src="http://localhost:5001/video" alt="Exercise Video" />
         <VideoPopup arrowPercent={{ x: 0.5, y: 0.4}} bubbleText="More information here" />
       </div>
-        <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
+      <div className='scrubHolder'>
+        <div className='scrub' onMouseDown={handleMouseDown}>
+            <div className='baseLine'></div>
+            <div className='watchedLine' style={{ width: `calc(80vw * ${scrubPos})` }}></div>
+        </div>
+      </div>
       </div>
     </div>
   );
 }
 
-export default Lessons;
+export default Feedback;
