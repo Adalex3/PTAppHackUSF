@@ -12,6 +12,8 @@ function Lessons() {
 
   const [isButtonHidden, setIsButtonHidden] = useState(true);
 
+  const [isUserInView, setIsUserInView] = useState(false);
+
   // State to track which exercise is currently active.
   // We start with -1 so that the first exercise is at index 0.
   const [exerciseIndex, setExerciseIndex] = useState(-1);
@@ -77,6 +79,25 @@ function Lessons() {
   }, []); // Runs once on mount
 
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:5001/is_in_frame');
+        const data = await res.json();
+        console.log("IN FRAME: " + data["in_frame"]);
+        if (data["in_frame"] != null) {
+          console.log("IN FRAME2222: " + data["in_frame"]);
+          setIsUserInView(data["in_frame"]);
+        }
+      } catch (err) {
+        // Optional: log silently or not at all
+        // console.error('Fetch failed:', err);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+
   // CENTER THE FOOTAGE
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,10 +128,10 @@ function Lessons() {
           var offsetX = 4*((0.5 - clampedX) * imageWidth);
           const offsetY = (0.5 - clampedY) * imageHeight;
 
-          console.log("viewWidth: " + viewWidth);
-          console.log("fullWidth: " + fullWidth);
-          console.log("minoffset: " + minOffset);
-          console.log("maxoffset: " + maxOffset);
+          // console.log("viewWidth: " + viewWidth);
+          // console.log("fullWidth: " + fullWidth);
+          // console.log("minoffset: " + minOffset);
+          // console.log("maxoffset: " + maxOffset);
 
           offsetX = Math.max(minOffset, offsetX)
           offsetX = Math.min(maxOffset, offsetX)
@@ -138,6 +159,7 @@ function Lessons() {
       <div className='visualContent'>
         <div className='video-div'>
           <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
+          <div className={`notInViewError ${isUserInView ? 'hidden' : ''}`}><p>{`Make sure your entire body is visible!`}</p></div>
         </div>
         <div className='feedbackDiv'></div>
       </div>
