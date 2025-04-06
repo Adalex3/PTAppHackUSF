@@ -1,0 +1,29 @@
+<svg width="1187" height="552" viewBox="0 0 1187 552" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="72" cy="171" rx="72" ry="171" transform="matrix(-1 0 0 1 1187 108)" fill="#FFB200"/>
+<ellipse cx="96.5" cy="177" rx="96.5" ry="177" transform="matrix(-1 0 0 1 1175 95)" fill="#EB5B00"/>
+<ellipse cx="122.5" cy="218.5" rx="122.5" ry="218.5" transform="matrix(-1 0 0 1 1157 53)" fill="#FFB200"/>
+<ellipse cx="137" cy="228" rx="137" ry="228" transform="matrix(-1 0 0 1 1133 44)" fill="#EB5B00"/>
+<ellipse cx="155.5" cy="268" rx="155.5" ry="268" transform="matrix(-1 0 0 1 1115 4)" fill="#FFB200"/>
+<ellipse cx="157" cy="271.5" rx="157" ry="271.5" transform="matrix(-1 0 0 1 1079 0)" fill="#EB5B00"/>
+<g filter="url(#filter0_i_1_157)">
+<rect x="193" y="260" width="754" height="37" fill="#EB5B00"/>
+</g>
+<ellipse cx="255" cy="280.5" rx="157" ry="271.5" fill="#EB5B00"/>
+<ellipse cx="211.5" cy="284" rx="155.5" ry="268" fill="#FFB200"/>
+<ellipse cx="170" cy="285" rx="137" ry="228" fill="#EB5B00"/>
+<ellipse cx="132.5" cy="289.5" rx="122.5" ry="218.5" fill="#FFB200"/>
+<ellipse cx="96.5" cy="290" rx="96.5" ry="177" fill="#EB5B00"/>
+<ellipse cx="72" cy="290" rx="72" ry="171" fill="#FFB200"/>
+<defs>
+<filter id="filter0_i_1_157" x="188" y="260" width="759" height="41" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-5" dy="4"/>
+<feGaussianBlur stdDeviation="5.45"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_157"/>
+</filter>
+</defs>
+</svg>

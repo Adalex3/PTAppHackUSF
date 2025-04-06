@@ -1,0 +1,32 @@
+/* // nav {
+    //     background-color: #3b82f6;
+    //     padding: 16px;
+    //     color: white;
+    //   }
+      
+    //   .navbar-container {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
+    //     max-width: 1200px;
+    //     margin: 0 auto;
+    //   } */
+:root {
+    --primary-color: #D91656;
+    --secondary-color: #640D5F;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --accent-color: #f59e0b;
+}
+
+.navbar{
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.logo a{
+    color: var(--accent-color);
+}
