@@ -115,9 +115,8 @@
     object-fit: contain;
 }
 
-.enlargedHeader .headerContent img {
+.lessons .enlargedHeader .headerContent img {
     aspect-ratio: 1.5;
-    /* background-color: red; */
     height: 100%;
     object-fit: contain;
 }
