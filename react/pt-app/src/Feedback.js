@@ -9,7 +9,7 @@ function Feedback() {
   const [scrubPos, setScrubPos] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [issues, setIssues] = useState([]);
+  const [activeIssues, setActiveIssues] = useState([]);
   const [conversionProgress, setConversionProgress] = useState(0);
   const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
@@ -119,31 +119,51 @@ function Feedback() {
   }, [totalDuration, isDragging]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5001/squat_json')
-      .then(res => res.json())
-      .then(data => setIssues(data.issues))
-      .catch(err => console.error('Failed to load issues:', err));
-  }, []);
+    let zeroProgressStart = null;
+    let completeProgressStart = null;
+    let overridden = false;
+    const thresholdTime = 5000; // 5 seconds threshold for zero progress
+    const completionDelay = 7500; // 1 second delay to confirm 100% progress
 
-  const currentFrame = Math.floor(scrubPos * 192);
-  const activeIssues = issues.reduce((acc, issue) => {
-    if (currentFrame >= issue.startFrame && currentFrame < issue.startFrame + issue.frameCount) {
-      const posIndex = currentFrame - issue.startFrame;
-      if (issue.positions && posIndex < issue.positions.length) {
-        acc.push({ ...issue, currentPosition: issue.positions[posIndex] });
-      }
-    }
-    return acc;
-  }, []);
-
-  useEffect(() => {
     const interval = setInterval(async () => {
       try {
         const res = await fetch('http://127.0.0.1:5001/recording_progress');
         const data = await res.json();
-        // Use data.progress to update your loading indicator
-        setConversionProgress(data.progress);
-        console.log("PROGRESS: " + data.progress)
+        let progress = data.progress;
+        console.log("PROGRESS: " + progress);
+
+        // If progress is 0, start or continue the zero progress timer
+        if (progress === 0) {
+          if (zeroProgressStart === null) {
+            zeroProgressStart = Date.now();
+          } else if (Date.now() - zeroProgressStart > thresholdTime) {
+            // Override progress to 100 after the threshold
+            progress = 101;
+            overridden = true;
+          }
+        } else {
+          zeroProgressStart = null;
+        }
+
+        // If progress is 100 (or overridden), start the completion delay timer
+        if (progress === 100) {
+          if (completeProgressStart === null) {
+            completeProgressStart = Date.now();
+          } else if (Date.now() - completeProgressStart > completionDelay) {
+            setConversionProgress(101);
+            clearInterval(interval);
+            return;
+          }
+        } else {
+          completeProgressStart = null;
+        }
+
+        setConversionProgress(progress);
+
+        // If progress was overridden, stop the timer immediately
+        if (overridden) {
+          clearInterval(interval);
+        }
       } catch (error) {
         console.error("Error fetching progress:", error);
       }
@@ -152,7 +172,7 @@ function Feedback() {
   }, []);
 
   useEffect(() => {
-    if (conversionProgress === 100) {
+    if (conversionProgress === 101) {
       setVideoSrc('http://127.0.0.1:5001/recording?v=' + Date.now());
     }
   }, [conversionProgress]);
@@ -163,7 +183,12 @@ function Feedback() {
         <p>Feedback</p>
       </div>
       <div className="mainContent">
-        <div className={`visualContent ${conversionProgress == 100 ? '' : 'hidden'}`}>
+        <div className={`progress ${conversionProgress === 100 ? 'last-bit' : ''}`}>
+          <div className='progressBar' style={{width: `${conversionProgress}%`}}>
+
+          </div>
+        </div>
+        <div className={`visualContent ${conversionProgress == 101 ? '' : 'hidden'}`}>
           <video ref={videoRef} src={videoSrc} />
           {activeIssues.map(issue => (
             <VideoPopup

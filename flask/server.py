@@ -25,18 +25,35 @@ def generate_frames():
 
 def convert_video(frames):
     global recording_conversion_progress
-    # Ensure the recordings directory exists.
+    import subprocess
+
     os.makedirs('recordings', exist_ok=True)
-    height, width, _ = frames[0].shape
-    # Define codec and create VideoWriter (using 20 FPS here)
-    out = cv2.VideoWriter('recordings/output.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 20, (width, height))
-    
-    total = len(frames)
+    temp_path = 'recordings/temp_frames'
+    os.makedirs(temp_path, exist_ok=True)
+
+    # Save frames as JPEG images
     for i, frame in enumerate(frames):
-        out.write(frame)
-        # Update progress as a percentage
-        recording_conversion_progress = int(((i + 1) / total) * 100)
-    out.release()
+        frame_path = os.path.join(temp_path, f'frame_{i:04d}.jpg')
+        cv2.imwrite(frame_path, frame)
+        recording_conversion_progress = int(((i + 1) / len(frames)) * 100)
+
+    # Use ffmpeg to encode the video
+    output_path = 'recordings/output.mp4'
+    cmd = [
+        'ffmpeg',
+        '-y',  # Overwrite output
+        '-framerate', '20',
+        '-i', os.path.join(temp_path, 'frame_%04d.jpg'),
+        '-c:v', 'libx264',
+        '-pix_fmt', 'yuv420p',
+        output_path
+    ]
+    subprocess.run(cmd)
+
+    # Cleanup temporary frame files
+    for file in os.listdir(temp_path):
+        os.remove(os.path.join(temp_path, file))
+    os.rmdir(temp_path)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
