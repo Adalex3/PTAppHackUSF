@@ -88,13 +88,6 @@ function Lessons() {
   }, []); // Runs once on mount
 
 
-  useEffect(()=>{
-    console.log("FEEDBACK UPDATES!!!")
-    console.log(feedback)
-    // console.log("feeld: " + feedback.bigText)
-  }, feedback)
-
-
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
@@ -120,7 +113,6 @@ function Lessons() {
           setFeedback(data)
         }
       } catch (err) {
-        // Optional: log silently or not at all
         console.error('Fetch failed:', err);
       }
     }, 1000);
@@ -173,6 +165,21 @@ function Lessons() {
   
     return () => clearInterval(interval);
   }, []);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      try {
+        fetch('http://127.0.0.1:5001/angles')
+        .then(res => res.json())
+        .then(data => {
+          console.log("angles: " + data.angles[0])
+        })
+      } catch (err) {
+        console.error('Fetch failed:', err);
+      }
+    }, 100)
+  });
 
   const handleDone = async () => {
     try {

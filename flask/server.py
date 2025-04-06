@@ -14,13 +14,15 @@ latest_avg_pos = None
 
 def generate_frames():
     global latest_avg_pos
-    for frame, avg_pos, in_frame in real_generate_frames():
+    for frame, avg_pos, in_frame, angles in real_generate_frames():
         latest_avg_pos = avg_pos
         #print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
             json.dump(avg_pos, f)
         with open('in_frame.json', 'w') as g:
             json.dump(in_frame, g)
+        with open('angles.json', 'w') as g:
+            json.dump(angles, g)
         yield frame
 
 def convert_video(frames):
@@ -98,8 +100,20 @@ def pose_data():
     else:
         return jsonify({'bigText': 'STOP'},{'smallText': "You need to re-center yourself!"},{'color': 'red'},{'textColor':'white'})
 
+
+@app.route('/angles')
+def angles():
+    if os.path.exists('angles.json'):
+        with open('angles.json') as f:
+            angles = json.load(f)
+        return jsonify({'angles': angles})
+    else:
+        return jsonify({'angles': None})
     
 
+@app.route('/feedback')
+def feedback():
+    # Return the position of the highest severity issue in 2D space in the image, the large message, the small message, and the severity
 
 
 @app.route('/squat_json')

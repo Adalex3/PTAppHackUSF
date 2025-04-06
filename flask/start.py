@@ -173,7 +173,7 @@ def generate_frames():
 
             # Yield the JPEG image as bytes along with the average landmark position and the frame validity flag
             yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n', avg_position, in_frame)
+                   b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n', avg_position, in_frame, [left_arm_angle, right_arm_angle, left_leg_angle, right_leg_angle])
 
 def check_if_frame(landmarks):
     """
