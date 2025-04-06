@@ -86,8 +86,8 @@ p {
   box-shadow: inset -5px -5px 10px rgba(100%,100%,100%,0.2), inset 5px 5px 10px rgba(0,0,0,0.2);
 
   transition: 0.2s;
-  text-underline-offset: 2px;
-  text-decoration: solid underline 0.5px white;
+  /* text-underline-offset: 2px;
+  text-decoration: solid underline 0.5px white; */
 }
 
 .button:hover {

@@ -6,10 +6,14 @@ import { useEffect } from 'react';
 import Lessons from './Lessons';
 import Feedback from './Feedback';
 
+import Landing from './pages/landing.jsx';
+
 function Home({ buttonRef, handleMouseMove, handleMouseLeave }) {
   return (
     <>
-      <header className="App-header">
+
+    <Landing></Landing>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>
           <h1>FixurPostur</h1>
@@ -24,7 +28,7 @@ function Home({ buttonRef, handleMouseMove, handleMouseLeave }) {
         >
           Resume Lessons
         </Link>
-      </div>
+      </div> */}
     </>
   );
 }
