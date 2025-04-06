@@ -111,7 +111,10 @@ def generate_frames():
                                landmarks[mp_holistic.PoseLandmark.RIGHT_ELBOW.value].y]
                 right_wrist = [landmarks[mp_holistic.PoseLandmark.RIGHT_WRIST.value].x,
                                landmarks[mp_holistic.PoseLandmark.RIGHT_WRIST.value].y]
-
+                
+                shoulder_center = [(left_shoulder[0] + right_shoulder[0])/2,
+                           (left_shoulder[1] + right_shoulder[1])/2]
+                
                 # Get coordinates for left leg joints
                 left_hip = [landmarks[mp_holistic.PoseLandmark.LEFT_HIP.value].x, 
                             landmarks[mp_holistic.PoseLandmark.LEFT_HIP.value].y]

@@ -114,7 +114,7 @@ def angles():
 @app.route('/feedback')
 def feedback():
     # Return the position of the highest severity issue in 2D space in the image, the large message, the small message, and the severity
-
+    pass
 
 @app.route('/squat_json')
 def squat_json():
