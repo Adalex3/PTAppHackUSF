@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
 
 <nav className="navbar">
-    <div className="logo">
-        <a href="#">HealthTesticlesTSPMO</a>
+    <div className="logo">POSTURA
+        {/* <a href="#">HealthTesticlesTSPMO</a> */}
     </div>
 </nav>
 );
