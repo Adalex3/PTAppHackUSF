@@ -49,7 +49,7 @@ function Lessons() {
         // show button after a few more seconds
         setTimeout(() => {
           setIsButtonHidden(false);
-        },10000)
+        },1000)
       }, 3000);
     }
   };
@@ -84,7 +84,7 @@ function Lessons() {
   useEffect(()=>{
     console.log("FEEDBACK UPDATES!!!")
     console.log(feedback)
-    console.log("feeld: " + feedback[0].bigText)
+    // console.log("feeld: " + feedback.bigText)
   }, feedback)
 
 
@@ -184,9 +184,9 @@ function Lessons() {
           <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
           <div className={`notInViewError ${isUserInView ? 'hidden' : ''}`}><p>{`Make sure your entire body is visible!`}</p></div>
         </div>
-        <div className='feedbackDiv' style={{backgroundColor: feedback[2] != null ? feedback[2].color : 'gray'}}>
-          <h1 style={{color: feedback[2] != null ? feedback[3].textColor : 'black'}}>{feedback[0] != null ? feedback[0].bigText : 'READY?'}</h1>
-          <p style={{color: feedback[2] != null ? feedback[3].textColor : 'black'}}>{feedback[1] != null ? feedback[1].smallText : '...'}</p>
+        <div className='feedbackDiv' style={{backgroundColor: feedback != null ? feedback[2].color : 'gray'}}>
+          <h1 style={{color: feedback != null ? feedback[3].textColor : 'black'}}>{feedback != null ? feedback[0].bigText : 'READY?'}</h1>
+          <p style={{color: feedback != null ? feedback[3].textColor : 'black'}}>{feedback != null ? feedback[1].smallText : '...'}</p>
         </div>
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
