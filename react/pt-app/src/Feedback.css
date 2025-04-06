@@ -150,12 +150,6 @@
     box-shadow: -5px -5px 10px rgba(0,0,0,0.5), inset 5px 5px 10px red;
   }
 
-  #done-btn {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-  }
-
   .button.hidden {
     opacity: 0;
   }
