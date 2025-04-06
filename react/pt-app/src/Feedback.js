@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import exercises from './exercises.js';
 import './Feedback.css';
 import logo from './logo.svg';
-import anshufreak from './anshufreak.mp4';
 import VideoPopup from './components/VideoPopup.js';
 
 function Feedback() {
@@ -11,6 +10,8 @@ function Feedback() {
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [issues, setIssues] = useState([]);
+  const [conversionProgress, setConversionProgress] = useState(0);
+  const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
 
   const mapRange = (a, b, c, d, e) => d + ((a - b) * (e - d)) / (c - b);
@@ -135,14 +136,35 @@ function Feedback() {
     return acc;
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:5001/recording_progress');
+        const data = await res.json();
+        // Use data.progress to update your loading indicator
+        setConversionProgress(data.progress);
+        console.log("PROGRESS: " + data.progress)
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (conversionProgress === 100) {
+      setVideoSrc('http://127.0.0.1:5001/recording?v=' + Date.now());
+    }
+  }, [conversionProgress]);
+
   return (
     <div className="feedback">
       <div className="header">
         <p>Feedback</p>
       </div>
       <div className="mainContent">
-        <div className="visualContent">
-          <video ref={videoRef} src={anshufreak} />
+        <div className={`visualContent ${conversionProgress == 100 ? '' : 'hidden'}`}>
+          <video ref={videoRef} src={videoSrc} />
           {activeIssues.map(issue => (
             <VideoPopup
               key={issue.id}
