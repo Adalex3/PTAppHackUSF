@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import exercises from './exercises.js'; // Import the exercise objects
+import { Routes, Route, Link } from 'react-router-dom';
 import './Lessons.css';
 import logo from './logo.svg';
 import VideoPopup from './components/VideoPopup.js';
@@ -189,7 +190,12 @@ function Lessons() {
           <p style={{color: feedback != null ? feedback[3].textColor : 'black'}}>{feedback != null ? feedback[1].smallText : '...'}</p>
         </div>
       </div>
-        <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
+        <Link
+          className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'
+          to="/feedback"
+        >
+          I'm done!
+        </Link>
       </div>
     </div>
   );
