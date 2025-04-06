@@ -3,8 +3,11 @@ import mediapipe.python.solutions.drawing_utils as drawing
 import mediapipe.python.solutions.drawing_styles as drawing_styles
 import mediapipe.python.solutions.holistic as mp_holistic
 import numpy as np
-
+from read_video import process_video_file, calculate_frame_angles, calc_angle
 cap = cv2.VideoCapture(1)
+
+ref_landmarks, ref_angles = process_video_file("squat.mp4")
+current_ref_frame = 0
 
 NEEDED_LANDMARKS = [
     mp_holistic.PoseLandmark.LEFT_SHOULDER,
@@ -121,19 +124,6 @@ def generate_frames():
                 img=buffer.tobytes()
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n', avg_position, in_frame)
-
-def calc_angle(a,b,c):
-    a = np.array(a) # First
-    b = np.array(b) # Mid
-    c = np.array(c) # End
-
-    radians = np.arctan2(c[0] - b[0], c[1] - b[1]) - np.arctan2(a[0] - b[0], a[1] - b[1])
-    angle = np.abs(radians * 180/np.pi)
-
-    if angle > 180.0:
-        angle = 360 - angle
-    
-    return angle
 
 def check_if_frame(landmarks):
     if not landmarks:
