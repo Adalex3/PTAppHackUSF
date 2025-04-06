@@ -160,8 +160,88 @@ EXERCISES: List[Exercise] = [
                     ),
                 ]
             ),
-            PoseLandmark.LEFT_ELBOW: JointAngle(value=47.0),
-            PoseLandmark.RIGHT_WRIST: JointAngle(value=51.0)
+            PoseLandmark.LEFT_ARM: JointAngle(
+                value=45,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=30,
+                        long_message=r"You need to extend your arms as far as possible.",
+                        short_message=r"Extend arms",
+                        severity=6.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=60,
+                        long_message=r"Your arms should be grasping your feet",
+                        short_message=r"Arms to feet",
+                        severity=5.5
+                    ),
+                ]
+            ),
+            PoseLandmark.RIGHT_ARM: JointAngle(
+                value=45,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=30,
+                        long_message=r"You need to extend your arms as far as possible.",
+                        short_message=r"Extend arms",
+                        severity=6.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=60,
+                        long_message=r"Your arms should be grasping your feet",
+                        short_message=r"Arms to feet",
+                        severity=5.5
+                    ),
+                ]
+            ),
+        }
+    ),
+    Exercise(
+        name="Wrist Flexion",
+        ideal_joint_values={
+            # For demonstration, using PoseLandmark values that best approximate the example.
+            PoseLandmark.RIGHT_WRIST: JointAngle(
+                value=90,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=70,
+                        long_message=r"Do not overstretch your wrist. You could damage it.",
+                        short_message=r"Relax your wrist",
+                        severity=9.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=110,
+                        long_message=r"To get a good stretch, you need to stretch your wrist more.",
+                        short_message=r"Stretch more.",
+                        severity=7.9
+                    ),
+                ]
+            ),
+            PoseLandmark.LEFT_WRIST: JointAngle(
+                value=90,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=70,
+                        long_message=r"Do not overstretch your wrist. You could damage it.",
+                        short_message=r"Relax your wrist",
+                        severity=9.2
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=110,
+                        long_message=r"To get a good stretch, you need to stretch your wrist more.",
+                        short_message=r"Stretch more.",
+                        severity=7.8
+                    ),
+                ]
+            ),
         }
     ),
     # Additional exercises can be added following the same structure.
