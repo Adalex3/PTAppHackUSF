@@ -1,6 +1,8 @@
 from flask import Flask, Response, request, jsonify
+from flask_cors import CORS
 from start import generate_frames
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 @app.route('/')
 def home():
@@ -30,6 +32,15 @@ def pose_data():
     # This should return the position and angle and other info about every joint, for the frontend to process
     return jsonify({'status':'error'}) # Default return
 
+
+@app.route('/squat_json')
+def squat_json():
+    try:
+        with open('squat_issues.json', 'r') as f:
+            data = f.read()
+        return Response(data, mimetype='application/json')
+    except FileNotFoundError:
+        return jsonify({'error': 'squat_issues.json not found'}), 404
     
 
 if __name__ == '__main__':

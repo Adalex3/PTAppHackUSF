@@ -251,7 +251,7 @@
       {
         "id": 1,
         "description": "Heels lifting off the ground.",
-        "startFrame": 75,
+        "startFrame": 20,
         "frameCount": 50,
         "positions": [
           [

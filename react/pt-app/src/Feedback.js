@@ -10,6 +10,7 @@ function Feedback() {
   const [scrubPos, setScrubPos] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [issues, setIssues] = useState([]);
   const videoRef = useRef(null);
 
   const mapRange = (a, b, c, d, e) => d + ((a - b) * (e - d)) / (c - b);
@@ -116,6 +117,24 @@ function Feedback() {
     }
   }, [totalDuration, isDragging]);
 
+  useEffect(() => {
+    fetch('http://127.0.0.1:5001/squat_json')
+      .then(res => res.json())
+      .then(data => setIssues(data.issues))
+      .catch(err => console.error('Failed to load issues:', err));
+  }, []);
+
+  const currentFrame = Math.floor(scrubPos * 192);
+  const activeIssues = issues.reduce((acc, issue) => {
+    if (currentFrame >= issue.startFrame && currentFrame < issue.startFrame + issue.frameCount) {
+      const posIndex = currentFrame - issue.startFrame;
+      if (issue.positions && posIndex < issue.positions.length) {
+        acc.push({ ...issue, currentPosition: issue.positions[posIndex] });
+      }
+    }
+    return acc;
+  }, []);
+
   return (
     <div className="feedback">
       <div className="header">
@@ -124,7 +143,14 @@ function Feedback() {
       <div className="mainContent">
         <div className="visualContent">
           <video ref={videoRef} src={anshufreak} />
-          <VideoPopup arrowPercent={{ x: 0.5, y: 0.4 }} bubbleText="More information here" />
+          {activeIssues.map(issue => (
+            <VideoPopup
+              key={issue.id}
+              arrowPercent={{ x: issue.currentPosition[0], y: issue.currentPosition[1] }}
+              bubbleText={issue.description}
+            />
+          ))}
+          {/* <VideoPopup arrowPercent={{x: 0.5, y: 1.0}} bubbleText="HELLO TEHRE!"></VideoPopup> */}
         </div>
         <div className="scrubHolder">
           <div className="scrub" onMouseDown={handleMouseDown}>

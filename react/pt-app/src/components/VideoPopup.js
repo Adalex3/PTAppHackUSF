@@ -5,6 +5,8 @@ const VideoPopup = ({ arrowPercent, bubbleText }) => {
   const containerRef = useRef(null);
   const [videoDims, setVideoDims] = useState({ width: 0, height: 0 });
 
+  console.log("init x: " + arrowPercent.x + " y: " + arrowPercent.y);
+
   const mapRange = (a, b, c, d, e) => {
     return d + ((a - b) * (e - d)) / (c - b);
   };
@@ -38,7 +40,7 @@ const VideoPopup = ({ arrowPercent, bubbleText }) => {
   const VIDEO_HEIGHT_CALC = viewportHeight*(VIDEO_HEIGHT_PERCENT);
   const VIDEO_WIDTH_CALC = VIDEO_HEIGHT_CALC*(VIDEO_ASPECT_RATIO);
   const VIDEO_SIDE_CALC = (viewportWidth-VIDEO_WIDTH_CALC)/2;
-  const VIDEO_TOP_CALC = 0.1725*viewportHeight +  0.0625*viewportHeight;
+  const VIDEO_TOP_CALC = 0.085*viewportHeight +  0.0625*viewportHeight;
 
 //   console.log("video top calc: " + VIDEO_TOP_CALC);
 //   console.log("arrowPercent.y: " + arrowPercent.y);
