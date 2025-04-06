@@ -3,6 +3,7 @@ from flask_cors import CORS
 from start import generate_frames as real_generate_frames
 import json
 import os
+import random
 
 latest_avg_pos = None
 
@@ -53,7 +54,15 @@ def set_pose():
 def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
     # This should return the position and angle and other info about every joint, for the frontend to process
-    return jsonify({'status':'error'}) # Default return
+    if(random.random() < 0.3):
+        return jsonify({'bigText': 'GREAT'},{'smallText': 'Keep stretching those calves!'},{'color': 'green'},{'textColor':'white'})
+    elif (random.random() < 0.3):
+        return jsonify({'bigText': 'FAIR'},{'smallText': 'Your posture is slipping.'},{'color': 'orange'},{'textColor':'white'})
+    else:
+        return jsonify({'bigText': 'STOP'},{'smallText': "You need to re-center yourself!"},{'color': 'red'},{'textColor':'white'})
+
+    
+
 
 
 @app.route('/squat_json')
