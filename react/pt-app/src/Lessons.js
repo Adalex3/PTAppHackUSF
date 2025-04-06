@@ -9,7 +9,7 @@ function Lessons() {
   // Default header content before transitioning to any exercise
   const defaultTitle = "Let's begin!";
   const defaultDescription = "Here is some information about the exercise that you are doing";
-  const defaultImage = 'logo.svg'; // Fallback or initial image
+  // const defaultImage = 'logo.svg'; // Fallback or initial image
 
   const [isButtonHidden, setIsButtonHidden] = useState(true);
 
@@ -26,7 +26,7 @@ function Lessons() {
     title: defaultTitle,
     shortDescription: defaultDescription,
     longDescription: defaultDescription,
-    image: defaultImage,
+    // image: defaultImage,
   });
 
 
@@ -123,63 +123,67 @@ function Lessons() {
   // CENTER THE FOOTAGE
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch('http://127.0.0.1:5001/avg_pos')
-        .then(res => res.json())
-        .then(data => {
-          const videoEl = document.getElementById('video');
-          if (!videoEl) return;
-  
-          const [x, y] = data.avg_pos;
-          // Clamp x and y from 0 to 1
-          const clampedX = Math.max(0, Math.min(1, x));
-          const clampedY = Math.max(0, Math.min(1, y));
-  
-          // Width of the image is 45vw
-          const imageWidth = window.innerWidth * 0.45;
-          const imageHeight = videoEl.clientHeight;
+      try {
+        fetch('http://127.0.0.1:5001/avg_pos')
+          .then(res => res.json())
+          .then(data => {
+            const videoEl = document.getElementById('video');
+            if (!videoEl) return;
+    
+            const [x, y] = data.avg_pos;
+            // Clamp x and y from 0 to 1
+            const clampedX = Math.max(0, Math.min(1, x));
+            const clampedY = Math.max(0, Math.min(1, y));
+    
+            // Width of the image is 45vw
+            const imageWidth = window.innerWidth * 0.45;
+            const imageHeight = videoEl.clientHeight;
 
-          const viewWidth = window.innerWidth * 0.38;
-          const fullWidth = window.innerHeight * 1.24;
+            const viewWidth = window.innerWidth * 0.38;
+            const fullWidth = window.innerHeight * 1.24;
 
-          // full width: 124vh
-          // view width: 45vw
+            // full width: 124vh
+            // view width: 45vw
 
-          const minOffset = -viewWidth;
-          const maxOffset = 0;
-  
-          var offsetX = 4*((0.5 - clampedX) * imageWidth);
-          const offsetY = (0.5 - clampedY) * imageHeight;
+            const minOffset = -viewWidth;
+            const maxOffset = 0;
+    
+            var offsetX = 4*((0.5 - clampedX) * imageWidth);
+            const offsetY = (0.5 - clampedY) * imageHeight;
 
-          // console.log("viewWidth: " + viewWidth);
-          // console.log("fullWidth: " + fullWidth);
-          // console.log("minoffset: " + minOffset);
-          // console.log("maxoffset: " + maxOffset);
+            // console.log("viewWidth: " + viewWidth);
+            // console.log("fullWidth: " + fullWidth);
+            // console.log("minoffset: " + minOffset);
+            // console.log("maxoffset: " + maxOffset);
 
-          offsetX = Math.max(minOffset, offsetX)
-          offsetX = Math.min(maxOffset, offsetX)
-  
-          videoEl.style.transform = `translate(${offsetX}px, 0px)`;
-        })
-        .catch(err => console.error(err));
-    }, 100);
+            offsetX = Math.max(minOffset, offsetX)
+            offsetX = Math.min(maxOffset, offsetX)
+    
+            videoEl.style.transform = `translate(${offsetX}px, 0px)`;
+          })
+          .catch(err => console.error(err));
+        } catch (err) {
+
+        }
+    }, 500);
   
     return () => clearInterval(interval);
   }, []);
 
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
       try {
-        fetch('http://127.0.0.1:5001/angles')
-        .then(res => res.json())
-        .then(data => {
-          console.log("angles: " + data.angles[0])
-        })
+        const res = await fetch('http://127.0.0.1:5001/angles');
+        const data = await res.json();
+        console.log("angles: " + data.angles[0]);
       } catch (err) {
         console.error('Fetch failed:', err);
       }
-    }, 100)
-  });
+    }, 500);
+  
+    return () => clearInterval(interval); // Clean up the interval on unmount
+  }, []);
 
   const handleDone = async () => {
     try {

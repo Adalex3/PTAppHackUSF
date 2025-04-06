@@ -58,7 +58,7 @@ def convert_video(frames):
     os.rmdir(temp_path)
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def home():

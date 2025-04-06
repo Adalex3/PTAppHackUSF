@@ -7,7 +7,7 @@ import os
 from read_video import calc_angle  # Only keep calc_angle since it is used to compute joint angles
 
 # Open the default camera (usually webcam at index 0)
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 # Global variables for recording video frames if needed
 recording_active = False
@@ -35,6 +35,10 @@ def generate_frames():
     computes joint angles for the arms and legs, overlays the angles onto the image, and yields the processed frame.
     """
     # Initialize MediaPipe Holistic model with detection and tracking confidence thresholds
+    left_arm_angle = 0
+    right_arm_angle = 0
+    left_leg_angle = 0
+    right_leg_angle = 0
     with mp_holistic.Holistic(min_detection_confidence=0.5, 
                               min_tracking_confidence=0.5, 
                               model_complexity=0) as holistic:
