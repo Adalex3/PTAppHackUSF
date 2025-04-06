@@ -61,6 +61,13 @@ function Lessons() {
     //   showNextExercise();
     // }, 10000);
 
+    // const interval2 = setInterval(() => {
+    //   fetch('http://127.0.0.1:5001/avg_pos')
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+    //     .catch(err => console.error(err));
+    // }, 1000); // Adjust interval as needed
+
     // Cleanup timers on component unmount.
     return () => {
       clearTimeout(initialTimeout);
