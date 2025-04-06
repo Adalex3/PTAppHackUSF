@@ -198,7 +198,7 @@ function Feedback() {
   return (
     <div className="feedback">
       <div className="header">
-        <p>Feedback</p>
+        <p>FEEDBACK</p>
       </div>
       <div className="mainContent">
         <div className={`progress ${conversionProgress === 100 ? 'last-bit' : ''}`}>
@@ -222,7 +222,7 @@ function Feedback() {
             <div className="baseLine"></div>
             <div className="watchedLine" style={{ width: `calc(80vw * ${scrubPos})` }}></div>
             <button className="playPause" onClick={togglePlay}>
-              {isPlaying ? 'Pause' : 'Play'}
+              {isPlaying ? 'PAUSE' : 'PLAY'}
             </button>
           </div>
         </div>
