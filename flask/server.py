@@ -14,8 +14,10 @@ latest_avg_pos = None
 
 def generate_frames():
     global latest_avg_pos
-    for frame, avg_pos, in_frame, angles in real_generate_frames():
+    for frame, avg_pos, in_frame, angles, landmarks in real_generate_frames():
         latest_avg_pos = avg_pos
+        print("LANNNDDDDDDMARRRRRKSSSSSSSSSSSSSS")
+        print(landmarks)
         #print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
             json.dump(avg_pos, f)
@@ -23,6 +25,13 @@ def generate_frames():
             json.dump(in_frame, g)
         with open('angles.json', 'w') as g:
             json.dump(angles, g)
+        with open('landmarks.json', 'w') as g:
+            json.dump([{
+                'x': lm.x,
+                'y': lm.y,
+                'z': lm.z,
+                'visibility': lm.visibility
+            } for lm in landmarks], g)
         yield frame
 
 def convert_video(frames):
@@ -93,6 +102,17 @@ def set_pose():
 def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
     # This should return the position and angle and other info about every joint, for the frontend to process
+    
+    feedback = feedback()
+
+    color = 'green'
+    if (feedback["severity"] > 7):
+        color = 'orange'
+    elif (feedback["severity"] > 7):
+        color = 'red'
+
+    jsonify({'bigText': 'GREAT'},{'smallText': },{'color': color},{'textColor':'white'})
+
     if(random.random() < 0.3):
         return jsonify({'bigText': 'GREAT'},{'smallText': 'Keep stretching those calves!'},{'color': 'green'},{'textColor':'white'})
     elif (random.random() < 0.3):
@@ -113,8 +133,85 @@ def angles():
 
 @app.route('/feedback')
 def feedback():
-    # Return the position of the highest severity issue in 2D space in the image, the large message, the small message, and the severity
-    pass
+    import os, json
+    from flask import jsonify
+    from mediapipe.python.solutions.pose import PoseLandmark
+    # Load the latest measured angles from file
+    angles = []
+    if os.path.exists('angles.json'):
+        with open('angles.json', 'r') as f:
+            angles = json.load(f)
+    # Load the latest landmarks from file
+    landmarks = []
+    if os.path.exists('landmarks.json'):
+        with open('landmarks.json', 'r') as f:
+            landmarks = json.load(f)
+    # If we don't have valid data, return an empty feedback response
+    if not angles or not landmarks:
+        return jsonify({
+            "position": None,
+            "big_message": "",
+            "small_message": "",
+            "severity": 0
+        })
+    
+    # For this example, we assume the exercise being performed is "Slow Squats"
+    # (change this as needed or fetch it from a different source)
+    from hard_coded_exercises import get_exercise_by_name, get_joint_angle_from_exercise
+    exercise = get_exercise_by_name("Slow Squats")
+    
+    # According to generate_frames(), the angles list is ordered as:
+    # [left_arm_angle, right_arm_angle, left_leg_angle, right_leg_angle]
+    # For "Slow Squats", we are interested in the knee angles.
+    try:
+        measured = {
+            PoseLandmark.RIGHT_KNEE: angles[3],
+            PoseLandmark.LEFT_KNEE: angles[2]
+        }
+    except IndexError:
+        return jsonify({
+            "position": None,
+            "big_message": "",
+            "small_message": "",
+            "severity": 0
+        })
+    
+    # Iterate over the measured joints and compare to the exercise's error cases.
+    # For each joint, check if any error case is triggered.
+    highest_issue = None  # Tuple: (severity, joint, error_case)
+    for joint, measured_angle in measured.items():
+        joint_data = get_joint_angle_from_exercise(exercise, joint)
+        for ec in joint_data.error_cases:
+            if ec.error_type.compare(measured_angle, ec.threshold):
+                if highest_issue is None or ec.severity > highest_issue[0]:
+                    highest_issue = (ec.severity, joint, ec)
+    
+    # If no error case was triggered, return an empty feedback response.
+    if highest_issue is None:
+        return jsonify({
+            "position": None,
+            "big_message": "",
+            "small_message": "",
+            "severity": 0
+        })
+    
+    # Use the error case with the highest severity.
+    _, problematic_joint, error_case = highest_issue
+    # Retrieve the 2D position (normalized x and y) of the problematic joint from the landmarks.
+    joint_index = problematic_joint.value  # PoseLandmark enum value as index
+    if joint_index < len(landmarks):
+        joint_landmark = landmarks[joint_index]
+        position = [joint_landmark.get("x", 0), joint_landmark.get("y", 0)]
+    else:
+        position = [0, 0]
+    
+    # Return the position, large message, small message, and severity as a JSON response.
+    return jsonify({
+        "position": position,
+        "big_message": error_case.long_message,
+        "small_message": error_case.short_message,
+        "severity": error_case.severity
+    })
 
 @app.route('/squat_json')
 def squat_json():

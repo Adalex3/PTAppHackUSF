@@ -8,7 +8,7 @@ and proper error handling to ensure no None values are ever served.
 """
 
 import mediapipe as mp
-from mediapipe.solutions.pose import PoseLandmark
+from mediapipe.python.solutions.pose import PoseLandmark
 from dataclasses import dataclass, field
 from typing import List, Dict
 from enum import Enum, auto
@@ -81,7 +81,7 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=82.5,
+                        threshold=96.5,
                         long_message=r"Your squat needs to be lower",
                         short_message=r"Squat lower",
                         severity=4.0
@@ -160,7 +160,7 @@ EXERCISES: List[Exercise] = [
                     ),
                 ]
             ),
-            PoseLandmark.LEFT_ARM: JointAngle(
+            PoseLandmark.LEFT_ELBOW: JointAngle(
                 value=45,
                 error_cases=[
                     ErrorCase(
@@ -179,7 +179,7 @@ EXERCISES: List[Exercise] = [
                     ),
                 ]
             ),
-            PoseLandmark.RIGHT_ARM: JointAngle(
+            PoseLandmark.RIGHT_ELBOW: JointAngle(
                 value=45,
                 error_cases=[
                     ErrorCase(

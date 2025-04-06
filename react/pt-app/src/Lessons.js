@@ -185,6 +185,20 @@ function Lessons() {
     return () => clearInterval(interval); // Clean up the interval on unmount
   }, []);
 
+  // useEffect(() => {
+  //   const interval = setInterval(async () => {
+  //     try {
+  //       const res = await fetch('http://127.0.0.1:5001/feedback');
+  //       const data = await res.json();
+  //       console.log("feedback: " + data);
+  //     } catch (err) {
+  //       console.error('Fetch failed:', err);
+  //     }
+  //   }, 1000);
+  
+  //   return () => clearInterval(interval); // Clean up the interval on unmount
+  // }, []);
+
   const handleDone = async () => {
     try {
       const res = await fetch('http://127.0.0.1:5001/recording_end', { method: 'POST' });
