@@ -64,7 +64,7 @@
     justify-content: center;
     gap: 5%;
     align-items: center;
-
+  
     z-index: 100;
 }
 
@@ -81,9 +81,15 @@
     margin: 0 5%;
     width: 100%;
     max-width: 1000px;
+    color: #FFB200;
+    
+    
 }
 .headerContent h3, .headerContent p {
     transition: 0.5s;
+    font-weight: bold;
+    color: #FFB200;
+    padding:3%;
 }
 
 .headerContent h3 {
@@ -116,18 +122,21 @@
     object-fit: contain;
 }
 
-.headerContent h3.start {
-
-    color: green;
+.headerContent h3 {
+  margin-left: 20%;;
+  font-weight: bold;
+  color: #FFB200;;
 }
 
 .enlargedHeader .header {
     height: 70vh;
     transition: 0.25s ease-out;
+    
 }
 
 .enlargedHeader .headerContent {
     max-width: 100vw;
+
 }
 
 .enlargedHeader .mainContent {
@@ -141,6 +150,7 @@
 
 .button1 {
     /* color: white; */
+    
     font-weight: bold;
     font-size: 1.25rem;
     padding: 2% 5%;
@@ -148,6 +158,7 @@
     border-radius: 5px;
     max-width: 600px;
     align-self: center;
+    bottom: 30%;
   
     /* filter: drop-shadow(-5px -5px 10px rgba(0,0,0,0.5));
     box-shadow: inset -5px -5px 10px rgba(100%,100%,100%,0.2), inset 5px 5px 10px rgba(0,0,0,0.2);
@@ -241,7 +252,7 @@
   }
 
 
-  .exercises-title{
+  /* .exercises-title{
     color:#D91656;
 
-  }
+  } */

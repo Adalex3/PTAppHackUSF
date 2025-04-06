@@ -190,7 +190,7 @@ function Lessons() {
       <div className='header'>
         <div className='headerContent'>
           {/* Header title updates based on the current exercise */}
-          <h3 className='start'>{currentExercise.title}</h3>
+          <h3>{currentExercise.title}</h3>
           <img src={currentExercise.image} alt={currentExercise.title} />
           {/* Depending on the enlargement state, show the long or short description */}
           <p>{isEnlarged ? currentExercise.longDescription : currentExercise.shortDescription}</p>
