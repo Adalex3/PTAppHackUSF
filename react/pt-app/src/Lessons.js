@@ -199,7 +199,7 @@ function Lessons() {
       <div className='mainContent'>
       <div className='visualContent'>
         <div className='video-div'>
-          <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
+          <img id="video" src="http://127.0.0.1:5001/video" alt="Exercise Video" />
           <div className={`notInViewError ${isUserInView ? 'hidden' : ''}`}><p>{`Make sure your entire body is visible!`}</p></div>
         </div>
         <div className='feedbackDiv' style={{backgroundColor: feedback != null ? feedback[2].color : 'gray'}}>
