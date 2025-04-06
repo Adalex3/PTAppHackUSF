@@ -137,6 +137,27 @@ def generate_frames():
                 left_leg_angle = calc_angle(left_hip, left_knee, left_heel)
                 right_leg_angle = calc_angle(right_hip, right_knee, right_heel)
 
+
+                if results.left_hand_landmarks:
+
+                    left_wrist_land = [left_wrist[0], left_wrist[1]]
+
+                    left_index_mcp = [results.left_hand_landmarks.landmark[mp_holistic.HandLandmark.INDEX_FINGER_MCP].x,
+                                     results.left_hand_landmarks.landmark[mp_holistic.HandLandmark.INDEX_FINGER_MCP].y]
+                    left_wrist_angle = calc_angle(left_elbow, left_wrist_land, left_index_mcp)
+                else:
+                    left_wrist_angle = None
+                
+                # For right wrist
+                if results.right_hand_landmarks:
+                    right_wrist_land = [right_wrist[0], right_wrist[1]]
+
+                    right_index_mcp = [results.right_hand_landmarks.landmark[mp_holistic.HandLandmark.INDEX_FINGER_MCP].x,
+                                      results.right_hand_landmarks.landmark[mp_holistic.HandLandmark.INDEX_FINGER_MCP].y]
+                    right_wrist_angle = calc_angle(right_elbow, right_wrist_land, right_index_mcp)
+                else:
+                    right_wrist_angle = None
+
                 # Get dimensions of the frame to correctly place the text
                 height, width = frame.shape[:2]
 
@@ -153,6 +174,17 @@ def generate_frames():
                 cv2.putText(img, str(right_leg_angle),
                             tuple(np.multiply(right_knee, [width, height]).astype(int)),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+                
+                if left_wrist_angle is not None:
+                    cv2.putText(img, str(int(left_wrist_angle)),
+                                tuple(np.multiply(left_wrist, [width, height]).astype(int)),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 2, cv2.LINE_AA)
+                
+                if right_wrist_angle is not None:
+                    cv2.putText(img, str(int(right_wrist_angle)),
+                                tuple(np.multiply(right_wrist, [width, height]).astype(int)),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 2, cv2.LINE_AA)
+
 
                 # Calculate the average position of all detected landmarks.
                 # This can be useful for additional processing or to center overlays.
