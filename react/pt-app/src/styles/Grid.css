@@ -1,0 +1,107 @@
+
+
+:root {
+    --primary-color: #D91656;
+    --secondary-color: #640D5F;
+    --text-light: #ffffff;
+    --text-dark: #EB5B00;
+    --accent-color: #FFB200;
+}
+/* 
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10%;
+    max-width: 45vw;
+    max-height: 75vh; 
+    padding: 5%;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    align-content: center;
+
+} */
+
+.grid-wrapper {
+    text-align: center;
+    margin-top: 40px;
+    padding:5%;
+  }
+  
+  .grid-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--secondary-color)
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .grid-button {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: #EB5B00;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    box-shadow: 0 6px 6px rgba(100, 13, 95, 0.4); 
+  }
+  
+  .grid-label {
+    grid-column: 1 / -1; /* spans all 3 columns */
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 0;
+    color: var(--secondary-color);
+  }
+  
+  .grid-button:hover {
+
+    background-color: var(--primary-color); /* Color when hovered (blue in this case) */
+  }
+  .grid-button.selected {
+    background-color: var(--primary-color); /* Color when selected */
+  }
+
+
+  .buttondiv{
+    margin-top: 20%;
+  }
+
+  .button1{
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: var(--secondary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    box-shadow: 0 6px 6px rgba(100, 13, 95, 0.4); 
+  }
+
+  .label1{
+    color:#ffffff;
+    font-weight: bold;
+  }
+
+
+  .button1:hover{
+    background-color:#31012f;
+  }

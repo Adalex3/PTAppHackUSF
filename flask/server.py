@@ -3,6 +3,8 @@ from flask_cors import CORS
 from start import generate_frames as real_generate_frames
 import json
 import os
+import random
+import cv2
 
 latest_avg_pos = None
 
@@ -10,9 +12,11 @@ def generate_frames():
     global latest_avg_pos
     for frame, avg_pos, in_frame in real_generate_frames():
         latest_avg_pos = avg_pos
-        print(avg_pos)
+        #print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
             json.dump(avg_pos, f)
+        with open('in_frame.json', 'w') as g:
+            json.dump(in_frame, g)
         yield frame
 
 app = Flask(__name__)
@@ -32,7 +36,12 @@ def load_video():
 @app.route('/is_in_frame')
 def is_in_frame():
     # Checks whether all joints are visible in the frame (if parts of their body are obscured or not). Returns true or false.
-    return jsonify({'in_frame': False}) # Default
+    if os.path.exists('in_frame.json'):
+        with open('in_frame.json') as f:
+            in_frame = json.load(f)
+        return jsonify({'in_frame': in_frame})
+    else:
+        return jsonify({'in_frame': None})
 
 
 @app.route('/set_pose', methods=['POST'])
@@ -46,7 +55,15 @@ def set_pose():
 def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
     # This should return the position and angle and other info about every joint, for the frontend to process
-    return jsonify({'status':'error'}) # Default return
+    if(random.random() < 0.3):
+        return jsonify({'bigText': 'GREAT'},{'smallText': 'Keep stretching those calves!'},{'color': 'green'},{'textColor':'white'})
+    elif (random.random() < 0.3):
+        return jsonify({'bigText': 'FAIR'},{'smallText': 'Your posture is slipping.'},{'color': 'orange'},{'textColor':'white'})
+    else:
+        return jsonify({'bigText': 'STOP'},{'smallText': "You need to re-center yourself!"},{'color': 'red'},{'textColor':'white'})
+
+    
+
 
 
 @app.route('/squat_json')
@@ -67,6 +84,55 @@ def avg_pos():
         return jsonify({'avg_pos': pos})
     else:
         return jsonify({'avg_pos': None})
+    
+
+
+@app.route('/recording_start', methods=['POST'])
+def recording_start():
+    # Import the recording globals from start.py
+    import start
+    start.recording_active = True
+    start.recorded_frames = []  # Clear any previously recorded frames
+    return jsonify({'status': 'recording started'})
+
+
+@app.route('/recording_end', methods=['POST'])
+def recording_end():
+    print("RECORDING END")
+    import start
+    start.recording_active = False
+    frames = start.recorded_frames
+
+    print("RECORDING END2")
+
+    if not frames:
+        print("RECORDING END333")
+        return jsonify({'status': 'no frames recorded'}), 400
+    
+    print("RECORDING END44")
+
+    # Ensure the recordings directory exists.
+    os.makedirs('recordings', exist_ok=True)
+
+    print("RECORDING END555")
+    
+    # Determine frame dimensions from the first recorded frame.
+    height, width, _ = frames[0].shape
+    # Define codec and create VideoWriter (using 20 FPS here)
+    out = cv2.VideoWriter('recordings/output.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 20, (width, height))
+
+    print("RECORDING END666")
+    
+    for frame in frames:
+        print("RECORDING END7777")
+        out.write(frame)
+    out.release()
+    print("RECORDING END888")
+
+    # Clear the recorded frames list.
+    start.recorded_frames = []
+    
+    return jsonify({'status': 'recording saved', 'file': 'recordings/output.mp4'})
     
 
 if __name__ == '__main__':
