@@ -184,8 +184,8 @@ def generate_frames2():
                 for landmark in landmarks:
                     total_x += landmark.x
                     total_y += landmark.y
-                total_x /= len(landmark)
-                total_y /= len(landmark)
+                total_x /= len(landmarks)
+                total_y /= len(landmarks)
 
                 avg_position = (total_x,total_y)
 
@@ -198,6 +198,7 @@ def generate_frames2():
             else:
                 fail, buffer=cv2.imencode('.jpg', img)
                 img=buffer.tobytes()
+                print("CURSE OF RA222")
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n', avg_position)
 

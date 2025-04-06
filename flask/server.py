@@ -1,6 +1,8 @@
 from flask import Flask, Response, request, jsonify
 from flask_cors import CORS
-from start import generate_frames as original_generate_frames
+from start import generate_frames2 as original_generate_frames
+import json
+import os
 
 latest_avg_pos = None
 
@@ -8,6 +10,9 @@ def generate_frames():
     global latest_avg_pos
     for frame, avg_pos in original_generate_frames():
         latest_avg_pos = avg_pos
+        print(avg_pos)
+        with open('latest_avg_pos.json', 'w') as f:
+            json.dump(avg_pos, f)
         yield frame
 
 app = Flask(__name__)
@@ -56,7 +61,12 @@ def squat_json():
 
 @app.route('/avg_pos')
 def avg_pos():
-    return jsonify({'avg_pos': latest_avg_pos})
+    if os.path.exists('latest_avg_pos.json'):
+        with open('latest_avg_pos.json') as f:
+            pos = json.load(f)
+        return jsonify({'avg_pos': pos})
+    else:
+        return jsonify({'avg_pos': None})
     
 
 if __name__ == '__main__':
