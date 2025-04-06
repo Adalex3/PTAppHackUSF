@@ -141,14 +141,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=160,
+                        threshold=120,
                         long_message=r"Your knees should be touching the floor.",
                         short_message=r"Lower knees",
                         severity=4.0
                     ),
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=140,
+                        threshold=80,
                         long_message=r"Your knees should be touching the floor.",
                         short_message=r"Lower knees",
                         severity=8.0
@@ -160,14 +160,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=160,
+                        threshold=120,
                         long_message=r"Your knees should be touching the floor.",
                         short_message=r"Lower knees",
                         severity=4.1
                     ),
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=140,
+                        threshold=80,
                         long_message=r"Your knees should be touching the floor.",
                         short_message=r"Lower knees",
                         severity=8.1
@@ -179,14 +179,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=140,
+                        threshold=120,
                         long_message=r"You need to extend your arms as far as possible.",
                         short_message=r"Extend arms",
                         severity=5.0
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=180,
+                        threshold=190,
                         long_message=r"Your arms should be grasping your feet",
                         short_message=r"Arms to feet",
                         severity=9.0
@@ -198,14 +198,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=140,
+                        threshold=120,
                         long_message=r"You need to extend your arms as far as possible.",
                         short_message=r"Extend arms",
                         severity=5.0
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=180,
+                        threshold=190,
                         long_message=r"Your arms should be grasping your feet",
                         short_message=r"Arms to feet",
                         severity=9.0
@@ -223,14 +223,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=70,
+                        threshold=30,
                         long_message=r"Do not overstretch your wrist. You could damage it.",
                         short_message=r"Relax your wrist",
                         severity=9.1
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=110,
+                        threshold=150,
                         long_message=r"To get a good stretch, you need to stretch your wrist more.",
                         short_message=r"Stretch more.",
                         severity=7.9
@@ -242,14 +242,14 @@ EXERCISES: List[Exercise] = [
                 error_cases=[
                     ErrorCase(
                         error_type=ErrorType.LESS_THAN,
-                        threshold=70,
+                        threshold=30,
                         long_message=r"Do not overstretch your wrist. You could damage it.",
                         short_message=r"Relax your wrist",
                         severity=9.2
                     ),
                     ErrorCase(
                         error_type=ErrorType.GREATER_THAN,
-                        threshold=110,
+                        threshold=150,
                         long_message=r"To get a good stretch, you need to stretch your wrist more.",
                         short_message=r"Stretch more.",
                         severity=7.8

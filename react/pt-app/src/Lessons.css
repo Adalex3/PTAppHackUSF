@@ -94,7 +94,7 @@
 }
 
 .headerContent h3 {
-    font-size: 3rem;
+    font-size: 2rem !important;
     margin: 10%;
 }
 
@@ -108,7 +108,7 @@
 
 .enlargedHeader .headerContent p {
     max-width: 30vw !important;
-    font-size: 2rem;
+    font-size: 1.5rem !important;
 }
 
 .headerContent img {
@@ -223,7 +223,7 @@
   }
 
   .feedbackDiv p {
-    font-size:2.5rem;
+    font-size:1.5rem !important;
     text-align: center;
     text-shadow: 0px 0px 5px black;
     transition: color 0.25s;

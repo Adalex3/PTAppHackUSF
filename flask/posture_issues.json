@@ -3,352 +3,2536 @@
     {
       "id": 0,
       "description": "Start squatting",
-      "startFrame": 0,
-      "frameCount": 20,
+      "startFrame": 2,
+      "frameCount": 2,
       "positions": [
         [
-          0.7028846144676208,
-          0.6100141406059265
+          0.84554523229599,
+          0.7522220611572266
         ],
         [
-          0.7109790444374084,
-          0.6239326000213623
-        ],
-        [
-          0.7182790637016296,
-          0.640669047832489
-        ],
-        [
-          0.7222546935081482,
-          0.7135174870491028
-        ],
-        [
-          0.7299801111221313,
-          0.753853976726532
-        ],
-        [
-          0.7216913104057312,
-          0.7624382972717285
-        ],
-        [
-          0.7125914096832275,
-          0.8348024487495422
-        ],
-        [
-          0.7090920209884644,
-          0.8695293664932251
-        ],
-        [
-          0.6996853947639465,
-          0.8460456132888794
-        ],
-        [
-          0.7152891159057617,
-          0.9945691227912903
-        ],
-        [
-          0.7064594626426697,
-          0.8804094791412354
-        ],
-        [
-          0.7040317058563232,
-          0.8700547218322754
-        ],
-        [
-          0.7709977626800537,
-          0.9887929558753967
-        ],
-        [
-          0.7639248371124268,
-          0.989409863948822
-        ],
-        [
-          0.7458814382553101,
-          0.9544255137443542
-        ],
-        [
-          0.7472369074821472,
-          0.9719445109367371
-        ],
-        [
-          0.7442072033882141,
-          1.0859415531158447
-        ],
-        [
-          0.7431496977806091,
-          1.079119086265564
-        ],
-        [
-          0.7374876141548157,
-          1.1875149011611938
-        ],
-        [
-          0.741054892539978,
-          1.2058666944503784
+          0.6264830231666565,
+          0.8737755417823792
         ]
       ]
     },
     {
       "id": 1,
-      "description": "Your squat needs to be lower",
-      "startFrame": 0,
-      "frameCount": 20,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 3,
+      "frameCount": 2,
       "positions": [
         [
-          0.7028846144676208,
-          0.6100141406059265
+          0.7224549651145935,
+          0.8001932501792908
         ],
         [
-          0.7109790444374084,
-          0.6239326000213623
-        ],
-        [
-          0.7182790637016296,
-          0.640669047832489
-        ],
-        [
-          0.7222546935081482,
-          0.7135174870491028
-        ],
-        [
-          0.7299801111221313,
-          0.753853976726532
-        ],
-        [
-          0.7216913104057312,
-          0.7624382972717285
-        ],
-        [
-          0.7125914096832275,
-          0.8348024487495422
-        ],
-        [
-          0.7090920209884644,
-          0.8695293664932251
-        ],
-        [
-          0.6996853947639465,
-          0.8460456132888794
-        ],
-        [
-          0.7152891159057617,
-          0.9945691227912903
-        ],
-        [
-          0.7064594626426697,
-          0.8804094791412354
-        ],
-        [
-          0.7040317058563232,
-          0.8700547218322754
-        ],
-        [
-          0.7709977626800537,
-          0.9887929558753967
-        ],
-        [
-          0.7639248371124268,
-          0.989409863948822
-        ],
-        [
-          0.7458814382553101,
-          0.9544255137443542
-        ],
-        [
-          0.7472369074821472,
-          0.9719445109367371
-        ],
-        [
-          0.7442072033882141,
-          1.0859415531158447
-        ],
-        [
-          0.7431496977806091,
-          1.079119086265564
-        ],
-        [
-          0.7374876141548157,
-          1.1875149011611938
-        ],
-        [
-          0.741054892539978,
-          1.2058666944503784
+          0.7224549651145935,
+          0.8001932501792908
         ]
       ]
     },
     {
       "id": 2,
       "description": "Start squatting",
-      "startFrame": 0,
-      "frameCount": 20,
+      "startFrame": 5,
+      "frameCount": 2,
       "positions": [
         [
-          0.7195042967796326,
-          0.6085615754127502
+          0.84554523229599,
+          0.7522220611572266
         ],
         [
-          0.7318059802055359,
-          0.6248336434364319
-        ],
-        [
-          0.7421475648880005,
-          0.6430169343948364
-        ],
-        [
-          0.7592139840126038,
-          0.715525209903717
-        ],
-        [
-          0.7629271745681763,
-          0.7605028748512268
-        ],
-        [
-          0.7639833092689514,
-          0.7744324207305908
-        ],
-        [
-          0.7707399129867554,
-          0.8424262404441833
-        ],
-        [
-          0.7641692757606506,
-          0.860167384147644
-        ],
-        [
-          0.7730954885482788,
-          0.854749858379364
-        ],
-        [
-          0.8084990382194519,
-          0.9400103092193604
-        ],
-        [
-          0.8216666579246521,
-          0.8761644959449768
-        ],
-        [
-          0.823336660861969,
-          0.8885718584060669
-        ],
-        [
-          0.8896194696426392,
-          0.9497544169425964
-        ],
-        [
-          0.8826434016227722,
-          0.9738908410072327
-        ],
-        [
-          0.8641510605812073,
-          1.0122902393341064
-        ],
-        [
-          0.8643918633460999,
-          1.0168273448944092
-        ],
-        [
-          0.8805820345878601,
-          1.0751101970672607
-        ],
-        [
-          0.886749267578125,
-          1.0677754878997803
-        ],
-        [
-          0.867318868637085,
-          1.1602345705032349
-        ],
-        [
-          0.8739277720451355,
-          1.1741278171539307
+          0.6264830231666565,
+          0.8737755417823792
         ]
       ]
     },
     {
       "id": 3,
-      "description": "Your squat needs to be lower",
-      "startFrame": 0,
-      "frameCount": 20,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 6,
+      "frameCount": 1,
       "positions": [
         [
-          0.7195042967796326,
-          0.6085615754127502
+          0.7224549651145935,
+          0.8001932501792908
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "description": "Start squatting",
+      "startFrame": 7,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7993154525756836,
+          1.4607630968093872
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 8,
+      "frameCount": 4,
+      "positions": [
+        [
+          0.7549068331718445,
+          0.9304735660552979
         ],
         [
-          0.7318059802055359,
-          0.6248336434364319
+          0.09082698822021484,
+          0.4572984576225281
         ],
         [
-          0.7421475648880005,
-          0.6430169343948364
+          0.5436774492263794,
+          0.9341141581535339
         ],
         [
-          0.7592139840126038,
-          0.715525209903717
+          0.5436774492263794,
+          0.9341141581535339
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "description": "Start squatting",
+      "startFrame": 10,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.02236134558916092,
+          0.63430255651474
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 11,
+      "frameCount": 4,
+      "positions": [
+        [
+          0.11396535485982895,
+          0.4708814322948456
         ],
         [
-          0.7629271745681763,
-          0.7605028748512268
+          0.07132307440042496,
+          0.44124138355255127
         ],
         [
-          0.7639833092689514,
-          0.7744324207305908
+          0.5436774492263794,
+          0.9341141581535339
         ],
         [
-          0.7707399129867554,
-          0.8424262404441833
+          0.5436774492263794,
+          0.9341141581535339
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "description": "Start squatting",
+      "startFrame": 13,
+      "frameCount": 1,
+      "positions": [
+        [
+          -0.0017360817873850465,
+          0.6886404752731323
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 14,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.07132307440042496,
+          0.44124138355255127
         ],
         [
-          0.7641692757606506,
-          0.860167384147644
+          0.07132307440042496,
+          0.44124138355255127
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "description": "Start squatting",
+      "startFrame": 16,
+      "frameCount": 1,
+      "positions": [
+        [
+          -0.0017360817873850465,
+          0.6886404752731323
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 17,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.07132307440042496,
+          0.44124138355255127
         ],
         [
-          0.7730954885482788,
-          0.854749858379364
+          0.07132307440042496,
+          0.44124138355255127
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "description": "Start squatting",
+      "startFrame": 19,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.8528653383255005,
+          0.9685699343681335
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 20,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.8651883602142334,
+          0.9584670662879944
         ],
         [
-          0.8084990382194519,
-          0.9400103092193604
+          0.7868440747261047,
+          1.1355410814285278
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 22,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7167452573776245,
+          1.2790390253067017
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 23,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.7031640410423279,
+          1.197893500328064
         ],
         [
-          0.8216666579246521,
-          0.8761644959449768
+          0.6920903921127319,
+          1.264420509338379
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 25,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6755656599998474,
+          1.189483642578125
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 27,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6161181330680847,
+          1.161554217338562
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 28,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6220034956932068,
+          1.1135340929031372
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 29,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.6825534105300903,
+          1.2526633739471436
         ],
         [
-          0.823336660861969,
-          0.8885718584060669
+          0.7487934231758118,
+          1.213573694229126
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 31,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.768427312374115,
+          1.3221303224563599
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "description": "Start squatting",
+      "startFrame": 34,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6311150789260864,
+          0.9464465379714966
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 1,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.5436774492263794,
+          0.9341141581535339
         ],
         [
-          0.8896194696426392,
-          0.9497544169425964
+          0.5436774492263794,
+          0.9341141581535339
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 4,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.5436774492263794,
+          0.9341141581535339
         ],
         [
-          0.8826434016227722,
-          0.9738908410072327
+          0.5436774492263794,
+          0.9341141581535339
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 7,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.5436774492263794,
+          0.9341141581535339
         ],
         [
-          0.8641510605812073,
-          1.0122902393341064
+          0.5436774492263794,
+          0.9341141581535339
+        ]
+      ]
+    },
+    {
+      "id": 25,
+      "description": "Start squatting",
+      "startFrame": 9,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6264830231666565,
+          0.8737755417823792
+        ]
+      ]
+    },
+    {
+      "id": 26,
+      "description": "Start squatting",
+      "startFrame": 12,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6264830231666565,
+          0.8737755417823792
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "description": "Start squatting",
+      "startFrame": 15,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3381246328353882,
+          1.8541661500930786
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "description": "Start squatting",
+      "startFrame": 19,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.34846922755241394,
+          1.7709944248199463
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "description": "Start squatting",
+      "startFrame": 23,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3615541458129883,
+          1.7917616367340088
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "description": "Start squatting",
+      "startFrame": 26,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4046013057231903,
+          1.571282982826233
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "description": "Start squatting",
+      "startFrame": 30,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4731735587120056,
+          1.6224507093429565
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 31,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.8724325895309448,
+          0.8264021873474121
         ],
         [
-          0.8643918633460999,
-          1.0168273448944092
+          0.8724325895309448,
+          0.8264021873474121
         ],
         [
-          0.8805820345878601,
-          1.0751101970672607
+          0.8724325895309448,
+          0.8264021873474121
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "description": "Start squatting",
+      "startFrame": 34,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4731735587120056,
+          1.6224507093429565
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 35,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.8724325895309448,
+          0.8264021873474121
         ],
         [
-          0.886749267578125,
-          1.0677754878997803
+          0.8724325895309448,
+          0.8264021873474121
         ],
         [
-          0.867318868637085,
-          1.1602345705032349
+          0.8724325895309448,
+          0.8264021873474121
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "description": "Start squatting",
+      "startFrame": 38,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6318752765655518,
+          -0.46005210280418396
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 39,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.2987285256385803,
+          0.5159250497817993
         ],
         [
-          0.8739277720451355,
-          1.1741278171539307
+          0.30069562792778015,
+          0.5138810276985168
+        ],
+        [
+          0.30069562792778015,
+          0.5138810276985168
+        ]
+      ]
+    },
+    {
+      "id": 37,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 42,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4589552879333496,
+          0.2682749330997467
+        ]
+      ]
+    },
+    {
+      "id": 38,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 43,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.4589552879333496,
+          0.2682749330997467
+        ],
+        [
+          0.4589552879333496,
+          0.2682749330997467
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 46,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.602580189704895,
+          0.5624362826347351
+        ],
+        [
+          0.602580189704895,
+          0.5624362826347351
+        ],
+        [
+          0.602580189704895,
+          0.5624362826347351
+        ]
+      ]
+    },
+    {
+      "id": 40,
+      "description": "Start squatting",
+      "startFrame": 49,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.8224484920501709,
+          0.9527798295021057
+        ]
+      ]
+    },
+    {
+      "id": 41,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 50,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.9614384770393372,
+          0.4912429749965668
+        ],
+        [
+          0.9614384770393372,
+          0.4912429749965668
+        ]
+      ]
+    },
+    {
+      "id": 42,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 52,
+      "frameCount": 1,
+      "positions": [
+        [
+          1.004685640335083,
+          0.5037140846252441
+        ]
+      ]
+    },
+    {
+      "id": 43,
+      "description": "Start squatting",
+      "startFrame": 53,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.9460487365722656,
+          0.6969508528709412
+        ]
+      ]
+    },
+    {
+      "id": 44,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 54,
+      "frameCount": 2,
+      "positions": [
+        [
+          1.004685640335083,
+          0.5037140846252441
+        ],
+        [
+          1.004685640335083,
+          0.5037140846252441
+        ]
+      ]
+    },
+    {
+      "id": 45,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 56,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.36783403158187866,
+          0.8915334343910217
+        ]
+      ]
+    },
+    {
+      "id": 46,
+      "description": "Start squatting",
+      "startFrame": 57,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.38130423426628113,
+          0.8788958191871643
+        ]
+      ]
+    },
+    {
+      "id": 47,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 58,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.41807231307029724,
+          0.8449392318725586
+        ],
+        [
+          0.41807231307029724,
+          0.8449392318725586
+        ]
+      ]
+    },
+    {
+      "id": 48,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 60,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.38375818729400635,
+          0.855556070804596
+        ]
+      ]
+    },
+    {
+      "id": 49,
+      "description": "Start squatting",
+      "startFrame": 61,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.39037707448005676,
+          0.8345796465873718
+        ]
+      ]
+    },
+    {
+      "id": 50,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 62,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.3813590109348297,
+          0.8534959554672241
+        ],
+        [
+          0.3813590109348297,
+          0.8534959554672241
+        ]
+      ]
+    },
+    {
+      "id": 51,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 64,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3974878489971161,
+          0.7886433005332947
+        ]
+      ]
+    },
+    {
+      "id": 52,
+      "description": "Your squat needs to be lower",
+      "startFrame": 65,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3643172085285187,
+          0.8456106185913086
+        ]
+      ]
+    },
+    {
+      "id": 53,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 66,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.3722907304763794,
+          0.8347960114479065
+        ],
+        [
+          0.3722907304763794,
+          0.8347960114479065
+        ]
+      ]
+    },
+    {
+      "id": 54,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 68,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3828622102737427,
+          0.8207906484603882
+        ]
+      ]
+    },
+    {
+      "id": 55,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 69,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.38378116488456726,
+          0.8233321905136108
+        ],
+        [
+          0.38378116488456726,
+          0.8233321905136108
+        ]
+      ]
+    },
+    {
+      "id": 56,
+      "description": "Your squat needs to be lower",
+      "startFrame": 71,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3817381262779236,
+          0.8594173192977905
+        ]
+      ]
+    },
+    {
+      "id": 57,
+      "description": "Your squat is too low; you risk falling backward.",
+      "startFrame": 75,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7438218593597412,
+          1.2019504308700562
+        ]
+      ]
+    },
+    {
+      "id": 58,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 76,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.7247451543807983,
+          1.0467851161956787
+        ],
+        [
+          0.7247451543807983,
+          1.0467851161956787
+        ],
+        [
+          0.771346926689148,
+          1.019166111946106
+        ]
+      ]
+    },
+    {
+      "id": 59,
+      "description": "Start squatting",
+      "startFrame": 79,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4298246204853058,
+          0.7759007811546326
+        ]
+      ]
+    },
+    {
+      "id": 60,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 82,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3719502389431,
+          0.5115496516227722
+        ]
+      ]
+    },
+    {
+      "id": 61,
+      "description": "Start squatting",
+      "startFrame": 83,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4273015558719635,
+          0.8371635675430298
+        ]
+      ]
+    },
+    {
+      "id": 62,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 84,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.3892052471637726,
+          0.503239631652832
+        ],
+        [
+          0.3892052471637726,
+          0.503239631652832
+        ],
+        [
+          0.42296284437179565,
+          0.4745955169200897
+        ]
+      ]
+    },
+    {
+      "id": 63,
+      "description": "Start squatting",
+      "startFrame": 87,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.46973052620887756,
+          0.8714219331741333
+        ]
+      ]
+    },
+    {
+      "id": 64,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 88,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.42338576912879944,
+          0.48189273476600647
+        ],
+        [
+          0.42338576912879944,
+          0.48189273476600647
+        ]
+      ]
+    },
+    {
+      "id": 65,
+      "description": "Start squatting",
+      "startFrame": 91,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3488289713859558,
+          0.8087919354438782
+        ]
+      ]
+    },
+    {
+      "id": 66,
+      "description": "Start squatting",
+      "startFrame": 95,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.32963722944259644,
+          0.8416351675987244
+        ]
+      ]
+    },
+    {
+      "id": 67,
+      "description": "Start squatting",
+      "startFrame": 99,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4337501525878906,
+          0.8583193421363831
+        ]
+      ]
+    },
+    {
+      "id": 68,
+      "description": "Start squatting",
+      "startFrame": 102,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4145623743534088,
+          0.8808835744857788
+        ]
+      ]
+    },
+    {
+      "id": 69,
+      "description": "Start squatting",
+      "startFrame": 106,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.41253042221069336,
+          0.8345811367034912
+        ]
+      ]
+    },
+    {
+      "id": 70,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 107,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.40339380502700806,
+          0.5044090151786804
+        ],
+        [
+          0.40339380502700806,
+          0.5044090151786804
+        ]
+      ]
+    },
+    {
+      "id": 71,
+      "description": "Start squatting",
+      "startFrame": 110,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.33573418855667114,
+          0.78607177734375
+        ]
+      ]
+    },
+    {
+      "id": 72,
+      "description": "Start squatting",
+      "startFrame": 113,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3684505522251129,
+          0.8080340027809143
+        ]
+      ]
+    },
+    {
+      "id": 73,
+      "description": "Start squatting",
+      "startFrame": 117,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4589346945285797,
+          0.847284197807312
+        ]
+      ]
+    },
+    {
+      "id": 74,
+      "description": "Start squatting",
+      "startFrame": 121,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4167243242263794,
+          0.8156343102455139
+        ]
+      ]
+    },
+    {
+      "id": 75,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 124,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3012090027332306,
+          0.49497178196907043
+        ]
+      ]
+    },
+    {
+      "id": 76,
+      "description": "Start squatting",
+      "startFrame": 125,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3747192323207855,
+          0.8710739016532898
+        ]
+      ]
+    },
+    {
+      "id": 77,
+      "description": "Start squatting",
+      "startFrame": 129,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4080028235912323,
+          0.8398987054824829
+        ]
+      ]
+    },
+    {
+      "id": 78,
+      "description": "Start squatting",
+      "startFrame": 133,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3996986448764801,
+          3.1443207263946533
+        ]
+      ]
+    },
+    {
+      "id": 79,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 136,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7157834768295288,
+          1.2380807399749756
+        ]
+      ]
+    },
+    {
+      "id": 80,
+      "description": "Start squatting",
+      "startFrame": 137,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.2932557463645935,
+          2.9356095790863037
+        ]
+      ]
+    },
+    {
+      "id": 81,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 138,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.8508678674697876,
+          1.495776891708374
+        ],
+        [
+          0.8508678674697876,
+          1.495776891708374
+        ],
+        [
+          0.657139778137207,
+          1.2785146236419678
+        ]
+      ]
+    },
+    {
+      "id": 82,
+      "description": "Start squatting",
+      "startFrame": 141,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.46123260259628296,
+          2.1607255935668945
+        ]
+      ]
+    },
+    {
+      "id": 83,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 142,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.7029886245727539,
+          1.2655143737792969
+        ],
+        [
+          0.7029886245727539,
+          1.2655143737792969
+        ]
+      ]
+    },
+    {
+      "id": 84,
+      "description": "Start squatting",
+      "startFrame": 145,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4864068627357483,
+          2.6419076919555664
+        ]
+      ]
+    },
+    {
+      "id": 85,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 146,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.836395263671875,
+          1.3819057941436768
+        ],
+        [
+          0.836395263671875,
+          1.3819057941436768
+        ],
+        [
+          0.7682663798332214,
+          1.2736402750015259
+        ]
+      ]
+    },
+    {
+      "id": 86,
+      "description": "Start squatting",
+      "startFrame": 149,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3011368215084076,
+          2.320857286453247
+        ]
+      ]
+    },
+    {
+      "id": 87,
+      "description": "Your knees should be touching the floor.",
+      "startFrame": 150,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.27734723687171936,
+          1.3524208068847656
+        ],
+        [
+          0.27734723687171936,
+          1.3524208068847656
+        ]
+      ]
+    },
+    {
+      "id": 88,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 152,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7516021728515625,
+          1.2402528524398804
+        ]
+      ]
+    },
+    {
+      "id": 89,
+      "description": "Start squatting",
+      "startFrame": 153,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.2772877812385559,
+          1.2921589612960815
+        ]
+      ]
+    },
+    {
+      "id": 90,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 154,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.7676399350166321,
+          1.1647237539291382
+        ],
+        [
+          0.7676399350166321,
+          1.1647237539291382
+        ],
+        [
+          0.6520677208900452,
+          1.1217806339263916
+        ]
+      ]
+    },
+    {
+      "id": 91,
+      "description": "Start squatting",
+      "startFrame": 157,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4414958953857422,
+          1.6191418170928955
+        ]
+      ]
+    },
+    {
+      "id": 92,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 158,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.6092455983161926,
+          1.1178717613220215
+        ],
+        [
+          0.6092455983161926,
+          1.1178717613220215
+        ],
+        [
+          0.5719295740127563,
+          1.3036609888076782
+        ]
+      ]
+    },
+    {
+      "id": 93,
+      "description": "Your squat needs to be lower",
+      "startFrame": 161,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.44794905185699463,
+          2.010828971862793
+        ]
+      ]
+    },
+    {
+      "id": 94,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 162,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.5857448577880859,
+          1.249245047569275
+        ],
+        [
+          0.5857448577880859,
+          1.249245047569275
+        ],
+        [
+          0.5667526125907898,
+          1.160551905632019
+        ]
+      ]
+    },
+    {
+      "id": 95,
+      "description": "Start squatting",
+      "startFrame": 165,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.24244464933872223,
+          1.0732966661453247
+        ]
+      ]
+    },
+    {
+      "id": 96,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 166,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.6558560729026794,
+          1.1563578844070435
+        ],
+        [
+          0.6558560729026794,
+          1.1563578844070435
+        ],
+        [
+          0.43836963176727295,
+          1.0238664150238037
+        ]
+      ]
+    },
+    {
+      "id": 97,
+      "description": "Start squatting",
+      "startFrame": 169,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.220537006855011,
+          0.910950243473053
+        ]
+      ]
+    },
+    {
+      "id": 98,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 170,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.5034231543540955,
+          1.0637873411178589
+        ],
+        [
+          0.5034231543540955,
+          1.0637873411178589
+        ],
+        [
+          0.4361458420753479,
+          1.1565773487091064
+        ]
+      ]
+    },
+    {
+      "id": 99,
+      "description": "Start squatting",
+      "startFrame": 173,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.227252796292305,
+          1.0194417238235474
+        ]
+      ]
+    },
+    {
+      "id": 100,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 174,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.5554644465446472,
+          1.1914712190628052
+        ],
+        [
+          0.5554644465446472,
+          1.1914712190628052
+        ]
+      ]
+    },
+    {
+      "id": 101,
+      "description": "Start squatting",
+      "startFrame": 176,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6651839017868042,
+          2.701427936553955
+        ]
+      ]
+    },
+    {
+      "id": 102,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 177,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.45014676451683044,
+          0.4512855112552643
+        ],
+        [
+          0.45014676451683044,
+          0.4512855112552643
+        ],
+        [
+          0.45014676451683044,
+          0.4512855112552643
+        ]
+      ]
+    },
+    {
+      "id": 103,
+      "description": "Start squatting",
+      "startFrame": 180,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.43886709213256836,
+          0.6758633852005005
+        ]
+      ]
+    },
+    {
+      "id": 104,
+      "description": "Start squatting",
+      "startFrame": 184,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4363216459751129,
+          0.7651697397232056
+        ]
+      ]
+    },
+    {
+      "id": 105,
+      "description": "Start squatting",
+      "startFrame": 188,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3919113576412201,
+          0.7875725030899048
+        ]
+      ]
+    },
+    {
+      "id": 106,
+      "description": "Start squatting",
+      "startFrame": 192,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.391306608915329,
+          0.8332495093345642
+        ]
+      ]
+    },
+    {
+      "id": 107,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 193,
+      "frameCount": 3,
+      "positions": [
+        [
+          0.4282247722148895,
+          0.5446861386299133
+        ],
+        [
+          0.4282247722148895,
+          0.5446861386299133
+        ],
+        [
+          0.4411318898200989,
+          0.539167046546936
+        ]
+      ]
+    },
+    {
+      "id": 108,
+      "description": "Start squatting",
+      "startFrame": 196,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4507371485233307,
+          0.798046886920929
+        ]
+      ]
+    },
+    {
+      "id": 109,
+      "description": "Start squatting",
+      "startFrame": 200,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.45534831285476685,
+          0.8255341053009033
+        ]
+      ]
+    },
+    {
+      "id": 110,
+      "description": "Start squatting",
+      "startFrame": 203,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4414849281311035,
+          0.8546591997146606
+        ]
+      ]
+    },
+    {
+      "id": 111,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 205,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.33892491459846497,
+          0.5099273920059204
+        ]
+      ]
+    },
+    {
+      "id": 112,
+      "description": "Start squatting",
+      "startFrame": 206,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5467315912246704,
+          1.0140049457550049
+        ]
+      ]
+    },
+    {
+      "id": 113,
+      "description": "Start squatting",
+      "startFrame": 211,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5550921559333801,
+          1.4826362133026123
+        ]
+      ]
+    },
+    {
+      "id": 114,
+      "description": "Start squatting",
+      "startFrame": 214,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5698923468589783,
+          1.5625046491622925
+        ]
+      ]
+    },
+    {
+      "id": 115,
+      "description": "Start squatting",
+      "startFrame": 217,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5526344776153564,
+          1.5850902795791626
+        ]
+      ]
+    },
+    {
+      "id": 116,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 218,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.4874787926673889,
+          0.9594836235046387
+        ],
+        [
+          0.5111755132675171,
+          0.9678909778594971
+        ]
+      ]
+    },
+    {
+      "id": 117,
+      "description": "Start squatting",
+      "startFrame": 220,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5574033260345459,
+          1.6096422672271729
+        ]
+      ]
+    },
+    {
+      "id": 118,
+      "description": "Start squatting",
+      "startFrame": 223,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5610094666481018,
+          1.5787150859832764
+        ]
+      ]
+    },
+    {
+      "id": 119,
+      "description": "Start squatting",
+      "startFrame": 225,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5721799731254578,
+          1.6133571863174438
+        ]
+      ]
+    },
+    {
+      "id": 120,
+      "description": "Start squatting",
+      "startFrame": 227,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5457348227500916,
+          1.5579309463500977
+        ]
+      ]
+    },
+    {
+      "id": 121,
+      "description": "Start squatting",
+      "startFrame": 229,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5455963611602783,
+          1.6145248413085938
+        ]
+      ]
+    },
+    {
+      "id": 122,
+      "description": "Start squatting",
+      "startFrame": 231,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5518649220466614,
+          1.6268715858459473
+        ]
+      ]
+    },
+    {
+      "id": 123,
+      "description": "Start squatting",
+      "startFrame": 233,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5283330082893372,
+          1.6557507514953613
+        ]
+      ]
+    },
+    {
+      "id": 124,
+      "description": "Start squatting",
+      "startFrame": 235,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4744001626968384,
+          2.0067288875579834
+        ]
+      ]
+    },
+    {
+      "id": 125,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 236,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6723194122314453,
+          0.9207661747932434
+        ]
+      ]
+    },
+    {
+      "id": 126,
+      "description": "Start squatting",
+      "startFrame": 237,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.3643020689487457,
+          1.9955388307571411
+        ]
+      ]
+    },
+    {
+      "id": 127,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 238,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6458996534347534,
+          0.6209736466407776
+        ]
+      ]
+    },
+    {
+      "id": 128,
+      "description": "Start squatting",
+      "startFrame": 239,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4473855793476105,
+          1.7271833419799805
+        ]
+      ]
+    },
+    {
+      "id": 129,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 240,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5940981507301331,
+          0.9015884399414062
+        ]
+      ]
+    },
+    {
+      "id": 130,
+      "description": "Start squatting",
+      "startFrame": 241,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.45242348313331604,
+          1.635269284248352
+        ]
+      ]
+    },
+    {
+      "id": 131,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 242,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6232095956802368,
+          0.8591958284378052
+        ]
+      ]
+    },
+    {
+      "id": 132,
+      "description": "Start squatting",
+      "startFrame": 243,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.46906474232673645,
+          1.6836978197097778
+        ]
+      ]
+    },
+    {
+      "id": 133,
+      "description": "Start squatting",
+      "startFrame": 245,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4773719608783722,
+          1.712394118309021
+        ]
+      ]
+    },
+    {
+      "id": 134,
+      "description": "Start squatting",
+      "startFrame": 247,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4549775719642639,
+          1.678040862083435
+        ]
+      ]
+    },
+    {
+      "id": 135,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 248,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6463264226913452,
+          0.740352213382721
+        ]
+      ]
+    },
+    {
+      "id": 136,
+      "description": "Start squatting",
+      "startFrame": 249,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4640296697616577,
+          1.6913530826568604
+        ]
+      ]
+    },
+    {
+      "id": 137,
+      "description": "Start squatting",
+      "startFrame": 251,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4654824435710907,
+          1.7542098760604858
+        ]
+      ]
+    },
+    {
+      "id": 138,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 252,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6008787751197815,
+          0.4673822820186615
+        ]
+      ]
+    },
+    {
+      "id": 139,
+      "description": "Start squatting",
+      "startFrame": 253,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.46891888976097107,
+          0.8639275431632996
+        ]
+      ]
+    },
+    {
+      "id": 140,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 254,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6087843179702759,
+          0.44913771748542786
+        ]
+      ]
+    },
+    {
+      "id": 141,
+      "description": "Start squatting",
+      "startFrame": 255,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4614894986152649,
+          0.7722645401954651
+        ]
+      ]
+    },
+    {
+      "id": 142,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 256,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.599536657333374,
+          0.6343300938606262
+        ]
+      ]
+    },
+    {
+      "id": 143,
+      "description": "Start squatting",
+      "startFrame": 257,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.43390944600105286,
+          0.7274091243743896
+        ]
+      ]
+    },
+    {
+      "id": 144,
+      "description": "Start squatting",
+      "startFrame": 259,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7299901247024536,
+          0.7868523001670837
+        ]
+      ]
+    },
+    {
+      "id": 145,
+      "description": "Start squatting",
+      "startFrame": 261,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7313424944877625,
+          0.8088545799255371
+        ]
+      ]
+    },
+    {
+      "id": 146,
+      "description": "Start squatting",
+      "startFrame": 263,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7430745959281921,
+          0.8012112379074097
+        ]
+      ]
+    },
+    {
+      "id": 147,
+      "description": "Start squatting",
+      "startFrame": 265,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7617464661598206,
+          0.7739548683166504
+        ]
+      ]
+    },
+    {
+      "id": 148,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 266,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6804180145263672,
+          0.45073434710502625
+        ]
+      ]
+    },
+    {
+      "id": 149,
+      "description": "Start squatting",
+      "startFrame": 267,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7406389713287354,
+          0.8007460236549377
+        ]
+      ]
+    },
+    {
+      "id": 150,
+      "description": "Start squatting",
+      "startFrame": 269,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7595703601837158,
+          0.8199149966239929
+        ]
+      ]
+    },
+    {
+      "id": 151,
+      "description": "Start squatting",
+      "startFrame": 271,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7565838694572449,
+          0.7474859952926636
+        ]
+      ]
+    },
+    {
+      "id": 152,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 272,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6587465405464172,
+          0.4323118329048157
+        ]
+      ]
+    },
+    {
+      "id": 153,
+      "description": "Start squatting",
+      "startFrame": 273,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7746842503547668,
+          0.8093547224998474
+        ]
+      ]
+    },
+    {
+      "id": 154,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 274,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6976934671401978,
+          0.4490751326084137
+        ]
+      ]
+    },
+    {
+      "id": 155,
+      "description": "Start squatting",
+      "startFrame": 275,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7187033295631409,
+          0.7299379706382751
+        ]
+      ]
+    },
+    {
+      "id": 156,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 276,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7094089984893799,
+          0.7283629179000854
+        ]
+      ]
+    },
+    {
+      "id": 157,
+      "description": "Start squatting",
+      "startFrame": 277,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5053232908248901,
+          1.6201250553131104
+        ]
+      ]
+    },
+    {
+      "id": 158,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 278,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7212026715278625,
+          0.49373146891593933
+        ]
+      ]
+    },
+    {
+      "id": 159,
+      "description": "Start squatting",
+      "startFrame": 279,
+      "frameCount": 2,
+      "positions": [
+        [
+          0.4730990529060364,
+          1.735133171081543
+        ],
+        [
+          0.5215739607810974,
+          1.5500279664993286
+        ]
+      ]
+    },
+    {
+      "id": 160,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 281,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6908459067344666,
+          0.4802708923816681
+        ]
+      ]
+    },
+    {
+      "id": 161,
+      "description": "Start squatting",
+      "startFrame": 282,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4911966621875763,
+          1.6293792724609375
+        ]
+      ]
+    },
+    {
+      "id": 162,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 283,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6892971396446228,
+          0.5882839560508728
+        ]
+      ]
+    },
+    {
+      "id": 163,
+      "description": "Start squatting",
+      "startFrame": 284,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.47276946902275085,
+          1.6853866577148438
+        ]
+      ]
+    },
+    {
+      "id": 164,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 285,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6740691661834717,
+          0.5893818736076355
+        ]
+      ]
+    },
+    {
+      "id": 165,
+      "description": "Start squatting",
+      "startFrame": 286,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5427186489105225,
+          1.6300981044769287
+        ]
+      ]
+    },
+    {
+      "id": 166,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 287,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6667141318321228,
+          0.4772607982158661
+        ]
+      ]
+    },
+    {
+      "id": 167,
+      "description": "Start squatting",
+      "startFrame": 288,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5036923885345459,
+          1.6818052530288696
+        ]
+      ]
+    },
+    {
+      "id": 168,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 289,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6816828846931458,
+          0.4649055302143097
+        ]
+      ]
+    },
+    {
+      "id": 169,
+      "description": "Start squatting",
+      "startFrame": 290,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.507396936416626,
+          1.669116497039795
+        ]
+      ]
+    },
+    {
+      "id": 170,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 291,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6768036484718323,
+          0.4792580008506775
+        ]
+      ]
+    },
+    {
+      "id": 171,
+      "description": "Start squatting",
+      "startFrame": 292,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5269526243209839,
+          1.638694167137146
+        ]
+      ]
+    },
+    {
+      "id": 172,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 293,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6849967241287231,
+          0.47535088658332825
+        ]
+      ]
+    },
+    {
+      "id": 173,
+      "description": "Start squatting",
+      "startFrame": 294,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4558412730693817,
+          1.7420464754104614
+        ]
+      ]
+    },
+    {
+      "id": 174,
+      "description": "Start squatting",
+      "startFrame": 296,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4666784405708313,
+          1.6687867641448975
+        ]
+      ]
+    },
+    {
+      "id": 175,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 297,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6874349117279053,
+          0.4852694571018219
+        ]
+      ]
+    },
+    {
+      "id": 176,
+      "description": "Start squatting",
+      "startFrame": 298,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5160505771636963,
+          1.7023097276687622
+        ]
+      ]
+    },
+    {
+      "id": 177,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 299,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6673533320426941,
+          0.6060070991516113
+        ]
+      ]
+    },
+    {
+      "id": 178,
+      "description": "Start squatting",
+      "startFrame": 300,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.5986794233322144,
+          1.997244119644165
+        ]
+      ]
+    },
+    {
+      "id": 179,
+      "description": "Start squatting",
+      "startFrame": 302,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.7054842114448547,
+          2.244119644165039
+        ]
+      ]
+    },
+    {
+      "id": 180,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 303,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.9885860681533813,
+          0.738446831703186
+        ]
+      ]
+    },
+    {
+      "id": 181,
+      "description": "Start squatting",
+      "startFrame": 304,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.470058411359787,
+          1.7253373861312866
+        ]
+      ]
+    },
+    {
+      "id": 182,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 305,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6922190189361572,
+          0.43393275141716003
+        ]
+      ]
+    },
+    {
+      "id": 183,
+      "description": "Start squatting",
+      "startFrame": 306,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4660000503063202,
+          1.6939295530319214
+        ]
+      ]
+    },
+    {
+      "id": 184,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 307,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6441078782081604,
+          0.7000323534011841
+        ]
+      ]
+    },
+    {
+      "id": 185,
+      "description": "Start squatting",
+      "startFrame": 308,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.45487624406814575,
+          1.7022733688354492
+        ]
+      ]
+    },
+    {
+      "id": 186,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 309,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6523631811141968,
+          0.7862638235092163
+        ]
+      ]
+    },
+    {
+      "id": 187,
+      "description": "Start squatting",
+      "startFrame": 310,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4567733108997345,
+          1.6830604076385498
+        ]
+      ]
+    },
+    {
+      "id": 188,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 311,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6521816849708557,
+          0.6162083148956299
+        ]
+      ]
+    },
+    {
+      "id": 189,
+      "description": "Start squatting",
+      "startFrame": 312,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.4712333381175995,
+          1.7395260334014893
+        ]
+      ]
+    },
+    {
+      "id": 190,
+      "description": "You need to extend your arms as far as possible.",
+      "startFrame": 313,
+      "frameCount": 1,
+      "positions": [
+        [
+          0.6931917667388916,
+          0.4384162724018097
         ]
       ]
     }

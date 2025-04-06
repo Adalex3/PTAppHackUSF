@@ -6,7 +6,7 @@ const exercises = [
     id: 1,
     title: "Slow Squat!",
     shortDescription: "Squat Lower",
-    longDescription: "Your knees are too extended, work on bending them more and pushing your hips back!",
+    longDescription: "It's easy to keep your knees too extended; work on bending them more and pushing your hips back!",
     image: logo,
   },
   {

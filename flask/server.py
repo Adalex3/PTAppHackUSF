@@ -244,28 +244,32 @@ def get_feedback_data(exercise_name: str):
                     "severity": ec.severity
                 })
     
-    # Check if any of the current issues are continuations of existing issues
-    for issue in current_issues:
-        # Look for matching ongoing issues
+    # Check if this highest issue is a continuation
+    if highest_issue is not None:
+        _, joint, ec = highest_issue
+        joint_index = joint.value
+        position = [0, 0]
+        if joint_index < len(landmarks):
+            joint_landmark = landmarks[joint_index]
+            position = [joint_landmark.get("x", 0), joint_landmark.get("y", 0)]
+
         matching_issue = None
         for existing_issue in issues_data["issues"]:
-            if (existing_issue["description"] == issue["description"] and 
+            if (existing_issue["description"] == ec.long_message and 
                 current_frame == existing_issue["startFrame"] + existing_issue["frameCount"]):
                 matching_issue = existing_issue
                 break
-        
+
         if matching_issue:
-            # Continue the existing issue
             matching_issue["frameCount"] += 1
-            matching_issue["positions"].append(issue["position"])
+            matching_issue["positions"].append(position)
         else:
-            # Start a new issue
             new_issue = {
                 "id": len(issues_data["issues"]),
-                "description": issue["description"],
+                "description": ec.long_message,
                 "startFrame": current_frame,
                 "frameCount": 1,
-                "positions": [issue["position"]]
+                "positions": [position]
             }
             issues_data["issues"].append(new_issue)
     

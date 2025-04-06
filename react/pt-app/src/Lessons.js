@@ -45,8 +45,8 @@ function Lessons() {
     setIsButtonHidden(true)
     const nextIndex = exerciseIndex + 1;
     if (nextIndex < exercises.length) {
-      const nextExercise = exercises[nextIndex];
-      setCurrentExercise(nextExercise);
+      const nextExercise = exerciseParameterIndex;
+      setCurrentExercise({title: exercises[nextExercise].title, shortDescription: exercises[nextExercise].shortDescription, longDescription: exercises[nextExercise].longDescription});
       setExerciseIndex(nextIndex);
       // Enlarge header to show the long description.
       setIsEnlarged(true);
@@ -223,7 +223,7 @@ function Lessons() {
         <div className='headerContent'>
           {/* Header title updates based on the current exercise */}
           <h3>{currentExercise.title}</h3>
-          <img src={currentExercise.image} alt={currentExercise.title} />
+          <img src={logo} alt={currentExercise.title} />
           {/* Depending on the enlargement state, show the long or short description */}
           <p>{isEnlarged ? currentExercise.longDescription : currentExercise.shortDescription}</p>
         </div>
