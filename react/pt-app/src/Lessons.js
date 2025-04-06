@@ -24,6 +24,7 @@ function Lessons() {
     image: defaultImage,
   });
 
+
   // State to control whether the header is in enlarged mode.
   const [isEnlarged, setIsEnlarged] = useState(false);
 
@@ -75,6 +76,53 @@ function Lessons() {
     };
   }, []); // Runs once on mount
 
+
+  // CENTER THE FOOTAGE
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch('http://127.0.0.1:5001/avg_pos')
+        .then(res => res.json())
+        .then(data => {
+          const videoEl = document.getElementById('video');
+          if (!videoEl) return;
+  
+          const [x, y] = data.avg_pos;
+          // Clamp x and y from 0 to 1
+          const clampedX = Math.max(0, Math.min(1, x));
+          const clampedY = Math.max(0, Math.min(1, y));
+  
+          // Width of the image is 45vw
+          const imageWidth = window.innerWidth * 0.45;
+          const imageHeight = videoEl.clientHeight;
+
+          const viewWidth = window.innerWidth * 0.38;
+          const fullWidth = window.innerHeight * 1.24;
+
+          // full width: 124vh
+          // view width: 45vw
+
+          const minOffset = -viewWidth;
+          const maxOffset = 0;
+  
+          var offsetX = 4*((0.5 - clampedX) * imageWidth);
+          const offsetY = (0.5 - clampedY) * imageHeight;
+
+          console.log("viewWidth: " + viewWidth);
+          console.log("fullWidth: " + fullWidth);
+          console.log("minoffset: " + minOffset);
+          console.log("maxoffset: " + maxOffset);
+
+          offsetX = Math.max(minOffset, offsetX)
+          offsetX = Math.min(maxOffset, offsetX)
+  
+          videoEl.style.transform = `translate(${offsetX}px, 0px)`;
+        })
+        .catch(err => console.error(err));
+    }, 100);
+  
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={`lessons ${isEnlarged ? 'enlargedHeader' : ''}`}>
       <div className='header'>
@@ -88,7 +136,9 @@ function Lessons() {
       </div>
       <div className='mainContent'>
       <div className='visualContent'>
-        <img src="http://localhost:5001/video" alt="Exercise Video" />
+        <div className='video-div'>
+          <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
+        </div>
         <div className='feedbackDiv'></div>
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>

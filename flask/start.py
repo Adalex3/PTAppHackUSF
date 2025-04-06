@@ -106,7 +106,6 @@ def generate_frames():
             else:
                 fail, buffer=cv2.imencode('.jpg', img)
                 img=buffer.tobytes()
-                print("CURSE OF RA222")
                 in_frame = True
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n', avg_position, in_frame)
