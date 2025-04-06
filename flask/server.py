@@ -16,7 +16,7 @@ def generate_frames():
     global latest_avg_pos
     for frame, avg_pos, in_frame in real_generate_frames():
         latest_avg_pos = avg_pos
-        print(avg_pos)
+        #print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
             json.dump(avg_pos, f)
         with open('in_frame.json', 'w') as g:
