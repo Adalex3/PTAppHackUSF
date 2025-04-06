@@ -4,6 +4,7 @@ from start import generate_frames as real_generate_frames
 import json
 import os
 import random
+import cv2
 
 latest_avg_pos = None
 
@@ -83,6 +84,55 @@ def avg_pos():
         return jsonify({'avg_pos': pos})
     else:
         return jsonify({'avg_pos': None})
+    
+
+
+@app.route('/recording_start', methods=['POST'])
+def recording_start():
+    # Import the recording globals from start.py
+    import start
+    start.recording_active = True
+    start.recorded_frames = []  # Clear any previously recorded frames
+    return jsonify({'status': 'recording started'})
+
+
+@app.route('/recording_end', methods=['POST'])
+def recording_end():
+    print("RECORDING END")
+    import start
+    start.recording_active = False
+    frames = start.recorded_frames
+
+    print("RECORDING END2")
+
+    if not frames:
+        print("RECORDING END333")
+        return jsonify({'status': 'no frames recorded'}), 400
+    
+    print("RECORDING END44")
+
+    # Ensure the recordings directory exists.
+    os.makedirs('recordings', exist_ok=True)
+
+    print("RECORDING END555")
+    
+    # Determine frame dimensions from the first recorded frame.
+    height, width, _ = frames[0].shape
+    # Define codec and create VideoWriter (using 20 FPS here)
+    out = cv2.VideoWriter('recordings/output.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 20, (width, height))
+
+    print("RECORDING END666")
+    
+    for frame in frames:
+        print("RECORDING END7777")
+        out.write(frame)
+    out.release()
+    print("RECORDING END888")
+
+    # Clear the recorded frames list.
+    start.recorded_frames = []
+    
+    return jsonify({'status': 'recording saved', 'file': 'recordings/output.mp4'})
     
 
 if __name__ == '__main__':

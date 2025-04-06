@@ -57,6 +57,12 @@ function Lessons() {
 
   // On component mount, trigger the first exercise and set an interval for subsequent transitions.
   useEffect(() => {
+
+    fetch('http://127.0.0.1:5001/recording_start', { method: 'POST' })
+    .then(res => res.json())
+    .then(data => console.log("Recording started:", data))
+    .catch(err => console.error("Error starting recording:", err));
+
     // Start with a brief delay before showing the first exercise.
     const initialTimeout = setTimeout(() => {
       showNextExercise();
@@ -168,6 +174,17 @@ function Lessons() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleDone = async () => {
+    try {
+      const res = await fetch('http://127.0.0.1:5001/recording_end', { method: 'POST' });
+      const data = await res.json();
+      console.log("Recording ended:", data);
+      showNextExercise();
+    } catch (error) {
+      console.error("Error ending recording:", error);
+    }
+  };
+
   return (
     <div className={`lessons ${isEnlarged ? 'enlargedHeader' : ''}`}>
       <div className='header'>
@@ -191,7 +208,8 @@ function Lessons() {
         </div>
       </div>
         <Link
-          className={`button1 ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'
+          className={`button ${isButtonHidden ? 'hidden' : ''}`} id='done-btn'
+          onClick={handleDone}
           to="/feedback"
         >
           <div className="message">Done</div>
