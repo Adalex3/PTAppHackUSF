@@ -92,7 +92,7 @@
 
 .enlargedHeader .headerContent img {
     aspect-ratio: 1.5;
-    background-color: red;
+    /* background-color: red; */
     height: 100%;
     object-fit: contain;
 }
@@ -173,6 +173,19 @@
     min-width: 40vw;
     height: 100%;
     background-color: gray;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .feedbackDiv h1 {
+    
+  }
+
+  .feedbackDiv p {
+    font-size:2.5rem;
   }
 
   .notInViewError {
@@ -194,4 +207,5 @@
 
   .notInViewError.hidden {
     opacity: 0;
+    transition: 0.5s;
   }

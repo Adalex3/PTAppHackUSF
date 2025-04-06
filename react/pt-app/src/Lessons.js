@@ -159,7 +159,10 @@ function Lessons() {
           <img id="video" src="http://localhost:5001/video" alt="Exercise Video" />
           <div className={`notInViewError ${isUserInView ? 'hidden' : ''}`}><p>{`Make sure your entire body is visible!`}</p></div>
         </div>
-        <div className='feedbackDiv'></div>
+        <div className='feedbackDiv'>
+          <h1>READY?</h1>
+          <p>...</p>
+        </div>
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
       </div>
