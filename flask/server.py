@@ -1,6 +1,6 @@
 from flask import Flask, Response, request, jsonify
 from flask_cors import CORS
-from start import generate_frames2 as original_generate_frames
+from start import generate_frames as real_generate_frames
 import json
 import os
 
@@ -8,7 +8,7 @@ latest_avg_pos = None
 
 def generate_frames():
     global latest_avg_pos
-    for frame, avg_pos in original_generate_frames():
+    for frame, avg_pos, in_frame in real_generate_frames():
         latest_avg_pos = avg_pos
         print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
