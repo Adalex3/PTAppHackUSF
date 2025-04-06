@@ -208,7 +208,7 @@ function Lessons() {
         </div>
       </div>
         <Link
-          className={`button ${isButtonHidden ? 'hidden' : ''}`} id='done-btn'
+          className={`button1 ${isButtonHidden ? 'hidden' : ''}`} id='done-btn'
           onClick={handleDone}
           to="/feedback"
         >
