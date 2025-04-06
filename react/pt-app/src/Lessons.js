@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import exercises from './exercises.js'; // Import the exercise objects
 import './Lessons.css';
 import logo from './logo.svg';
+import VideoPopup from './components/VideoPopup.js';
 
 function Lessons() {
   // Default header content before transitioning to any exercise
@@ -52,7 +53,7 @@ function Lessons() {
   useEffect(() => {
     // Start with a brief delay before showing the first exercise.
     const initialTimeout = setTimeout(() => {
-      showNextExercise();
+      // showNextExercise();
     }, 100);
 
     // Automatically cycle through exercises every 10 seconds.
@@ -81,6 +82,7 @@ function Lessons() {
       <div className='mainContent'>
       <div className='visualContent'>
         <img src="http://localhost:5001/video" alt="Exercise Video" />
+        <VideoPopup arrowPercent={{ x: 0.5, y: 0.4}} bubbleText="More information here" />
       </div>
         <a className={`button ${isButtonHidden ? 'hidden' : ''}`} onClick={showNextExercise} id='done-btn'>I'm done!</a>
       </div>
