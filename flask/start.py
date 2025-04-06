@@ -111,7 +111,10 @@ def generate_frames():
                                landmarks[mp_holistic.PoseLandmark.RIGHT_ELBOW.value].y]
                 right_wrist = [landmarks[mp_holistic.PoseLandmark.RIGHT_WRIST.value].x,
                                landmarks[mp_holistic.PoseLandmark.RIGHT_WRIST.value].y]
-
+                
+                shoulder_center = [(left_shoulder[0] + right_shoulder[0])/2,
+                           (left_shoulder[1] + right_shoulder[1])/2]
+                
                 # Get coordinates for left leg joints
                 left_hip = [landmarks[mp_holistic.PoseLandmark.LEFT_HIP.value].x, 
                             landmarks[mp_holistic.PoseLandmark.LEFT_HIP.value].y]
@@ -173,7 +176,7 @@ def generate_frames():
 
             # Yield the JPEG image as bytes along with the average landmark position and the frame validity flag
             yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n', avg_position, in_frame)
+                   b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n', avg_position, in_frame, [left_arm_angle, right_arm_angle, left_leg_angle, right_leg_angle])
 
 def check_if_frame(landmarks):
     """

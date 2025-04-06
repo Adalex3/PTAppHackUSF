@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 This module defines a hard-coded database of exercises.
-Each exercise contains ideal joint angles (using Mediapipe joints) and optional error cases.
+Each exercise contains ideal joint angles (using Mediapipe joints) and multiple optional error cases.
 Raw strings (using the r"" notation) are used exclusively for the long and short messages.
 All data is encapsulated in enums or objects, with ample functions to access different data
 and proper error handling to ensure no None values are ever served.
@@ -10,7 +10,7 @@ and proper error handling to ensure no None values are ever served.
 import mediapipe as mp
 from mediapipe.solutions.pose import PoseLandmark
 from dataclasses import dataclass, field
-from typing import Optional, Dict, List
+from typing import List, Dict
 from enum import Enum, auto
 
 # Improved ErrorType with a built-in comparison method.
@@ -31,27 +31,25 @@ class ErrorType(Enum):
     def label(self) -> str:
         """
         Generates a descriptive label from the enum member.
-        This does not use raw strings; it derives the label from the enum name.
         """
-        # Converts 'GREATER_THAN' to 'greater than' etc.
         return self.name.replace("_", " ").lower()
 
 
 # Dataclass representing an error case for a joint angle.
 @dataclass
 class ErrorCase:
-    error_type: ErrorType            # Type of error condition (an enum)
-    threshold: float                 # Threshold value (in degrees)
-    long_message: str                # Raw string: detailed explanation message
-    short_message: str               # Raw string: concise explanation message
-    severity: float                  # Severity (scale 0-10)
+    error_type: ErrorType         # Type of error condition (an enum)
+    threshold: float              # Threshold value (in degrees)
+    long_message: str             # Raw string: detailed explanation message
+    short_message: str            # Raw string: concise explanation message
+    severity: float               # Severity (scale 0-10)
 
 
-# Dataclass representing a joint angle with an optional error case.
+# Dataclass representing a joint angle with a list of optional error cases.
 @dataclass
 class JointAngle:
-    value: float                                  # Ideal angle value (in degrees)
-    error_case: Optional[ErrorCase] = None        # Optional error case for the joint
+    value: float                           # Ideal angle value (in degrees)
+    error_cases: List[ErrorCase] = field(default_factory=list)  # List of error cases
 
 
 # Dataclass representing an exercise with a set of ideal joint angles.
@@ -64,7 +62,7 @@ class Exercise:
 
 # Default error case used when no data exists for a query.
 DEFAULT_ERROR_CASE = ErrorCase(
-    error_type=ErrorType.LESS_THAN,  # Default error type; its comparison is not used here.
+    error_type=ErrorType.LESS_THAN,  # Default error type (its comparison is not used here)
     threshold=0.0,
     long_message=r"Data not found.",
     short_message=r"Not found",
@@ -75,22 +73,175 @@ DEFAULT_ERROR_CASE = ErrorCase(
 # Hard-coded database of exercises.
 EXERCISES: List[Exercise] = [
     Exercise(
-        name="Exercise A",
+        name="Slow Squats",
         ideal_joint_values={
             # For demonstration, using PoseLandmark values that best approximate the example.
             PoseLandmark.RIGHT_KNEE: JointAngle(
-                value=31.0,
-                error_case=ErrorCase(
-                    error_type=ErrorType.GREATER_THAN,
-                    threshold=35.0,
-                    long_message=r"you need to increase your angle",
-                    short_message=r"increase angle",
-                    severity=5.0
-                )
+                value=77.5,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=82.5,
+                        long_message=r"Your squat needs to be lower",
+                        short_message=r"Squat lower",
+                        severity=4.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=72.5,
+                        long_message=r"Your squat is too low; you risk falling backward.",
+                        short_message=r"Squat less",
+                        severity=7.0
+                    )
+                ]
             ),
-            PoseLandmark.LEFT_KNEE: JointAngle(value=28.0),
+            PoseLandmark.LEFT_KNEE: JointAngle(
+                value=77.5,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=82.5,
+                        long_message=r"Your squat needs to be lower",
+                        short_message=r"Squat lower",
+                        severity=4.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=72.5,
+                        long_message=r"Your squat is too low; you risk falling backward.",
+                        short_message=r"Squat less",
+                        severity=7.1
+                    )
+                ]
+            ),
             PoseLandmark.LEFT_ELBOW: JointAngle(value=47.0),
             PoseLandmark.RIGHT_WRIST: JointAngle(value=51.0)
+        }
+    ),
+    Exercise(
+        name="Hamstring Stretch",
+        ideal_joint_values={
+            # For demonstration, using PoseLandmark values that best approximate the example.
+            PoseLandmark.RIGHT_KNEE: JointAngle(
+                value=180,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=160,
+                        long_message=r"Your knees should be touching the floor.",
+                        short_message=r"Lower knees",
+                        severity=4.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=140,
+                        long_message=r"Your knees should be touching the floor.",
+                        short_message=r"Lower knees",
+                        severity=8.0
+                    ),
+                ]
+            ),
+            PoseLandmark.LEFT_KNEE: JointAngle(
+                value=180,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=160,
+                        long_message=r"Your knees should be touching the floor.",
+                        short_message=r"Lower knees",
+                        severity=4.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=140,
+                        long_message=r"Your knees should be touching the floor.",
+                        short_message=r"Lower knees",
+                        severity=8.1
+                    ),
+                ]
+            ),
+            PoseLandmark.LEFT_ARM: JointAngle(
+                value=45,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=30,
+                        long_message=r"You need to extend your arms as far as possible.",
+                        short_message=r"Extend arms",
+                        severity=6.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=60,
+                        long_message=r"Your arms should be grasping your feet",
+                        short_message=r"Arms to feet",
+                        severity=5.5
+                    ),
+                ]
+            ),
+            PoseLandmark.RIGHT_ARM: JointAngle(
+                value=45,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=30,
+                        long_message=r"You need to extend your arms as far as possible.",
+                        short_message=r"Extend arms",
+                        severity=6.0
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=60,
+                        long_message=r"Your arms should be grasping your feet",
+                        short_message=r"Arms to feet",
+                        severity=5.5
+                    ),
+                ]
+            ),
+        }
+    ),
+    Exercise(
+        name="Wrist Flexion",
+        ideal_joint_values={
+            # For demonstration, using PoseLandmark values that best approximate the example.
+            PoseLandmark.RIGHT_WRIST: JointAngle(
+                value=90,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=70,
+                        long_message=r"Do not overstretch your wrist. You could damage it.",
+                        short_message=r"Relax your wrist",
+                        severity=9.1
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=110,
+                        long_message=r"To get a good stretch, you need to stretch your wrist more.",
+                        short_message=r"Stretch more.",
+                        severity=7.9
+                    ),
+                ]
+            ),
+            PoseLandmark.LEFT_WRIST: JointAngle(
+                value=90,
+                error_cases=[
+                    ErrorCase(
+                        error_type=ErrorType.LESS_THAN,
+                        threshold=70,
+                        long_message=r"Do not overstretch your wrist. You could damage it.",
+                        short_message=r"Relax your wrist",
+                        severity=9.2
+                    ),
+                    ErrorCase(
+                        error_type=ErrorType.GREATER_THAN,
+                        threshold=110,
+                        long_message=r"To get a good stretch, you need to stretch your wrist more.",
+                        short_message=r"Stretch more.",
+                        severity=7.8
+                    ),
+                ]
+            ),
         }
     ),
     # Additional exercises can be added following the same structure.
@@ -115,7 +266,7 @@ def get_joint_angle_from_exercise(exercise: Exercise, joint: PoseLandmark) -> Jo
     Retrieves the JointAngle for a given joint from an exercise.
     If the joint data does not exist, returns a JointAngle with a value of 0.0 and a default error case.
     """
-    return exercise.ideal_joint_values.get(joint, JointAngle(value=0.0, error_case=DEFAULT_ERROR_CASE))
+    return exercise.ideal_joint_values.get(joint, JointAngle(value=0.0, error_cases=[DEFAULT_ERROR_CASE]))
 
 
 def get_joint_value_from_exercise(exercise: Exercise, joint: PoseLandmark) -> float:
@@ -127,13 +278,15 @@ def get_joint_value_from_exercise(exercise: Exercise, joint: PoseLandmark) -> fl
     return joint_angle.value
 
 
-def get_error_case_from_exercise(exercise: Exercise, joint: PoseLandmark) -> ErrorCase:
+def get_error_cases_from_exercise(exercise: Exercise, joint: PoseLandmark) -> List[ErrorCase]:
     """
-    Retrieves the error case for the specified joint in the exercise.
-    Returns a default error case if none is found.
+    Retrieves the list of error cases for the specified joint in the exercise.
+    Returns a default error case in a list if none is found.
     """
     joint_angle = get_joint_angle_from_exercise(exercise, joint)
-    return joint_angle.error_case if joint_angle.error_case is not None else DEFAULT_ERROR_CASE
+    if joint_angle.error_cases:
+        return joint_angle.error_cases
+    return [DEFAULT_ERROR_CASE]
 
 
 def list_all_exercises() -> List[str]:
@@ -154,21 +307,21 @@ def list_joints_in_exercise(exercise: Exercise) -> List[str]:
 
 def print_exercise_details(exercise: Exercise) -> None:
     """
-    Prints details of the exercise including joint angles and error cases.
+    Prints details of the exercise including joint angles and all associated error cases.
     """
     print(f"Exercise: {exercise.name}")
     if not exercise.ideal_joint_values:
         print("  No joint data available.")
     for joint, joint_angle in exercise.ideal_joint_values.items():
         print(f"  {joint.name}: {joint_angle.value}º")
-        if joint_angle.error_case:
-            ec = joint_angle.error_case
-            print("    Error Case:")
-            print(f"      Type: {ec.error_type.label()}")
-            print(f"      Threshold: {ec.threshold}º")
-            print(f"      Long Message: {ec.long_message}")
-            print(f"      Short Message: {ec.short_message}")
-            print(f"      Severity: {ec.severity}/10")
+        if joint_angle.error_cases:
+            for idx, ec in enumerate(joint_angle.error_cases, start=1):
+                print(f"    Error Case {idx}:")
+                print(f"      Type: {ec.error_type.label()}")
+                print(f"      Threshold: {ec.threshold}º")
+                print(f"      Long Message: {ec.long_message}")
+                print(f"      Short Message: {ec.short_message}")
+                print(f"      Severity: {ec.severity}/10")
     print()
 
 
@@ -178,11 +331,12 @@ if __name__ == "__main__":
     exercise = get_exercise_by_name(exercise_name)
     print_exercise_details(exercise)
 
-    # Example: Access joint angle and error case for a specific joint.
+    # Example: Access joint angle and error cases for a specific joint.
     joint = PoseLandmark.RIGHT_KNEE
     joint_angle = get_joint_angle_from_exercise(exercise, joint)
     print(f"Accessed {joint.name}: {joint_angle.value}º")
-    error_case = get_error_case_from_exercise(exercise, joint)
-    print(f"Error Info -> Type: {error_case.error_type.label()}, "
-          f"Long Message: {error_case.long_message}, "
-          f"Short Message: {error_case.short_message}")
+    error_cases = get_error_cases_from_exercise(exercise, joint)
+    for idx, ec in enumerate(error_cases, start=1):
+        print(f"Error Info {idx} -> Type: {ec.error_type.label()}, "
+              f"Long Message: {ec.long_message}, "
+              f"Short Message: {ec.short_message}")
