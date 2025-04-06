@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import exercises from './exercises.js';
 import './Feedback.css';
 import logo from './logo.svg';
-import anshufreak from './anshufreak.mp4';
 import VideoPopup from './components/VideoPopup.js';
 
 function Feedback() {
@@ -11,6 +10,8 @@ function Feedback() {
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [issues, setIssues] = useState([]);
+  const [conversionProgress, setConversionProgress] = useState(0);
+  const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
 
   const mapRange = (a, b, c, d, e) => d + ((a - b) * (e - d)) / (c - b);
@@ -49,6 +50,24 @@ function Feedback() {
     if (scrubPos === 1) setScrubPos(0);
     setIsPlaying((prev) => !prev);
   };
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5001/squat_json')
+      .then(res => res.json())
+      .then(data => setIssues(data.issues))
+      .catch(err => console.error('Failed to load issues:', err));
+  }, []);
+
+  const currentFrame = Math.floor(scrubPos * 192);
+  const activeIssues = issues.reduce((acc, issue) => {
+    if (currentFrame >= issue.startFrame && currentFrame < issue.startFrame + issue.frameCount) {
+      const posIndex = currentFrame - issue.startFrame;
+      if (issue.positions && posIndex < issue.positions.length) {
+        acc.push({ ...issue, currentPosition: issue.positions[posIndex] });
+      }
+    }
+    return acc;
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -118,22 +137,63 @@ function Feedback() {
   }, [totalDuration, isDragging]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5001/squat_json')
-      .then(res => res.json())
-      .then(data => setIssues(data.issues))
-      .catch(err => console.error('Failed to load issues:', err));
+    let zeroProgressStart = null;
+    let completeProgressStart = null;
+    let overridden = false;
+    const thresholdTime = 5000; // 5 seconds threshold for zero progress
+    const completionDelay = 7500; // 1 second delay to confirm 100% progress
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('http://127.0.0.1:5001/recording_progress');
+        const data = await res.json();
+        let progress = data.progress;
+        console.log("PROGRESS: " + progress);
+
+        // If progress is 0, start or continue the zero progress timer
+        if (progress === 0) {
+          if (zeroProgressStart === null) {
+            zeroProgressStart = Date.now();
+          } else if (Date.now() - zeroProgressStart > thresholdTime) {
+            // Override progress to 100 after the threshold
+            progress = 101;
+            overridden = true;
+          }
+        } else {
+          zeroProgressStart = null;
+        }
+
+        // If progress is 100 (or overridden), start the completion delay timer
+        if (progress === 100) {
+          if (completeProgressStart === null) {
+            completeProgressStart = Date.now();
+          } else if (Date.now() - completeProgressStart > completionDelay) {
+            setConversionProgress(101);
+            clearInterval(interval);
+            return;
+          }
+        } else {
+          completeProgressStart = null;
+        }
+
+        setConversionProgress(progress);
+
+        // If progress was overridden, stop the timer immediately
+        if (overridden) {
+          clearInterval(interval);
+        }
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    }, 10);
+    return () => clearInterval(interval);
   }, []);
 
-  const currentFrame = Math.floor(scrubPos * 192);
-  const activeIssues = issues.reduce((acc, issue) => {
-    if (currentFrame >= issue.startFrame && currentFrame < issue.startFrame + issue.frameCount) {
-      const posIndex = currentFrame - issue.startFrame;
-      if (issue.positions && posIndex < issue.positions.length) {
-        acc.push({ ...issue, currentPosition: issue.positions[posIndex] });
-      }
+  useEffect(() => {
+    if (conversionProgress === 101) {
+      setVideoSrc('http://127.0.0.1:5001/recording?v=' + Date.now());
     }
-    return acc;
-  }, []);
+  }, [conversionProgress]);
 
   return (
     <div className="feedback">
@@ -141,8 +201,13 @@ function Feedback() {
         <p>Feedback</p>
       </div>
       <div className="mainContent">
-        <div className="visualContent">
-          <video ref={videoRef} src={anshufreak} />
+        <div className={`progress ${conversionProgress === 100 ? 'last-bit' : ''}`}>
+          <div className='progressBar' style={{width: `${conversionProgress}%`}}>
+
+          </div>
+        </div>
+        <div className={`visualContent ${conversionProgress == 101 ? '' : 'hidden'}`}>
+          <video ref={videoRef} src={videoSrc} />
           {activeIssues.map(issue => (
             <VideoPopup
               key={issue.id}
