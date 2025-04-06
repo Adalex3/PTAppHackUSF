@@ -9,7 +9,7 @@ function Feedback() {
   const [scrubPos, setScrubPos] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeIssues, setActiveIssues] = useState([]);
+  const [issues, setIssues] = useState([]);
   const [conversionProgress, setConversionProgress] = useState(0);
   const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
@@ -50,6 +50,24 @@ function Feedback() {
     if (scrubPos === 1) setScrubPos(0);
     setIsPlaying((prev) => !prev);
   };
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5001/squat_json')
+      .then(res => res.json())
+      .then(data => setIssues(data.issues))
+      .catch(err => console.error('Failed to load issues:', err));
+  }, []);
+
+  const currentFrame = Math.floor(scrubPos * 192);
+  const activeIssues = issues.reduce((acc, issue) => {
+    if (currentFrame >= issue.startFrame && currentFrame < issue.startFrame + issue.frameCount) {
+      const posIndex = currentFrame - issue.startFrame;
+      if (issue.positions && posIndex < issue.positions.length) {
+        acc.push({ ...issue, currentPosition: issue.positions[posIndex] });
+      }
+    }
+    return acc;
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
