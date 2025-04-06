@@ -3,7 +3,6 @@ import mediapipe.python.solutions.drawing_utils as drawing
 import mediapipe.python.solutions.drawing_styles as drawing_styles
 import mediapipe.python.solutions.holistic as mp_holistic
 import numpy as np
-import time
 
 cap = cv2.VideoCapture(1)
 
