@@ -39,7 +39,7 @@ const Grid = () => {
         <button 
           className={` grid-button ${selectedTop === 2 ? 'selected' : ''}`} 
           onClick={() => handleTopButtonClick(2)}>
-          WRIST FLEXION/EXTENSION
+          WRIST FLEXION
         </button>
       
 

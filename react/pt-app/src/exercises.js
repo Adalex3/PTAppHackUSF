@@ -4,19 +4,25 @@ import logo from './logo.svg';
 const exercises = [
   {
     id: 1,
-    title: "Get ready!",
-    shortDescription: "Get into a good PT position.",
-    longDescription: "Get into a good PT position. Make sure the camera can see your whole body!",
+    title: "Slow Squat!",
+    shortDescription: "Squat Lower",
+    longDescription: "Your knees are too extended, work on bending them more and pushing your hips back!",
     image: logo,
   },
   {
     id: 2,
-    title: "Cardio Blast",
-    shortDescription: "Boost your heart rate.",
-    longDescription: "Engage in a high-energy cardio session with jumping jacks to increase your heart rate and energize your body.",
+    title: "Hamstring Stretch",
+    shortDescription: "Bring your chest to your knees!",
+    longDescription: "Focus on having your arms pull your chest closer to your knees. Dont throw your back forward, let arms do the work by pulling on your feet!",
     image: logo,
-  }
-  // Add more exercises as needed.
+  },
+  {
+    id: 3,
+    title: "Wrist Flexion",
+    shortDescription: "Loosen your fist.",
+    longDescription: "Maintain separation between fingertips and palm of your hand. There shouldn't be a strain on the back of your hand!",
+    image: logo,
+  },
 ];
 
 export default exercises;
