@@ -1,0 +1,28 @@
+.video-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensures underlying interactions are not blocked */
+    z-index: 10; /* Display above the video */
+  }
+  
+  .arrow-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .popup-bubble {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    pointer-events: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }

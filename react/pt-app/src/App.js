@@ -4,6 +4,7 @@ import './App.css';
 import logo from './logo.svg';
 import { useEffect } from 'react';
 import Lessons from './Lessons';
+import Feedback from './Feedback';
 
 import Landing from './pages/landing.jsx';
 
@@ -73,6 +74,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/lessons" element={<Lessons />} />
+        <Route path="/feedback" element={<Feedback />} />
       </Routes>
     </div>
   );
