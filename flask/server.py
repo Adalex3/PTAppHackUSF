@@ -155,9 +155,11 @@ def get_feedback_data(exercise_name: str):
 
     issues_file = 'posture_issues.json'
     issues_data = {"issues": []}
-    if os.path.exists(issues_file):
+    try:
         with open(issues_file, 'r') as f:
             issues_data = json.load(f)
+    except json.JSONDecodeError:
+        issues_data = {"issues": []}
 
     # If we don't have valid data, return an empty feedback response
     if not angles or not landmarks:
@@ -167,6 +169,14 @@ def get_feedback_data(exercise_name: str):
             "small_message": "",
             "severity": 0
         })
+    
+    last_frame = 0
+    if issues_data["issues"]:
+        last_frame = max(issue["startFrame"] + issue["frameCount"] for issue in issues_data["issues"])
+    if not hasattr(get_feedback_data, "frame_counter"):
+        get_feedback_data.frame_counter = 0
+    current_frame = get_feedback_data.frame_counter
+    get_feedback_data.frame_counter += 1
     
     # For this example, we assume the exercise being performed is "Slow Squats"
     # (change this as needed or fetch it from a different source)
@@ -206,7 +216,6 @@ def get_feedback_data(exercise_name: str):
         })
     
     # Track current frame (you'll need to implement frame counting in your video processing)
-    current_frame = 0  # This should come from your video processing logic
     
     # Iterate over the measured joints and compare to the exercise's error cases
     highest_issue = None
