@@ -139,6 +139,7 @@ def calc_angle(a,b,c):
 def check_if_frame(landmarks):
     if not landmarks:
         return False
+    total_visibility = 0
     for landmark in NEEDED_LANDMARKS:
         landmark_point = landmarks.landmark[landmark]
         if landmark_point.visibility < 0.5:

@@ -13,6 +13,8 @@ def generate_frames():
         print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
             json.dump(avg_pos, f)
+        with open('in_frame.json', 'w') as g:
+            json.dump(in_frame, g)
         yield frame
 
 app = Flask(__name__)
@@ -32,7 +34,12 @@ def load_video():
 @app.route('/is_in_frame')
 def is_in_frame():
     # Checks whether all joints are visible in the frame (if parts of their body are obscured or not). Returns true or false.
-    return jsonify({'in_frame': False}) # Default
+    if os.path.exists('in_frame.json'):
+        with open('in_frame.json') as f:
+            in_frame = json.load(f)
+        return jsonify({'in_frame': in_frame})
+    else:
+        return jsonify({'in_frame': None})
 
 
 @app.route('/set_pose', methods=['POST'])
