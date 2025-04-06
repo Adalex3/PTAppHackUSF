@@ -68,8 +68,8 @@ const VideoPopup = ({ arrowPercent, bubbleText }) => {
   const PADDING = 10;
   const y_sign = arrowPercent.y > 0.5 ? 1 : -1;
   const bubbleY = mapRange((y_sign*Math.sqrt((Math.abs(arrowPercent.y*2-1))**1)),-1,1,(viewportHeight*0.2)+PADDING,viewportHeight-bubbleHeight-PADDING);
-  console.log("ARROW PERCENT Y real: " + (arrowPercent.y))
-  console.log("ARROW PERCENT Y: " + (y_sign*Math.sqrt((Math.abs(arrowPercent.y*2-1))**1)))
+//   console.log("ARROW PERCENT Y real: " + (arrowPercent.y))
+//   console.log("ARROW PERCENT Y: " + (y_sign*Math.sqrt((Math.abs(arrowPercent.y*2-1))**1)))
   const DIVISIONS_FOR_X = 5;
   if(side == 'left') {  
     bubbleX = mapRange(arrowPercent.x,0,0.5,(defaultBubbleWidth/2)+PADDING,viewportWidth/DIVISIONS_FOR_X);
