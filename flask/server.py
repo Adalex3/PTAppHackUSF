@@ -16,7 +16,7 @@ def generate_frames():
     global latest_avg_pos
     for frame, avg_pos, in_frame, angles, landmarks in real_generate_frames():
         latest_avg_pos = avg_pos
-        print("LANNNDDDDDDMARRRRRKSSSSSSSSSSSSSS")
+        print("LANNNDDDDDDDDMARRRRRKSSSSSSSSSSSSSS")
         print(landmarks)
         #print(avg_pos)
         with open('latest_avg_pos.json', 'w') as f:
@@ -103,7 +103,8 @@ def pose_data():
     # Returns a big JSON with lots of data about the user's movements. Has all of the pose data that the backend gets to be processed by frontend
     # This should return the position and angle and other info about every joint, for the frontend to process
     
-    feedback = get_feedback_data().get_json()
+    exercise = request.args.get("exercise", "Slow Squats")
+    feedback = get_feedback_data(exercise).get_json()
 
     print(feedback)
 
@@ -136,7 +137,7 @@ def angles():
         return jsonify({'angles': None})
     
 
-def get_feedback_data():
+def get_feedback_data(exercise_name: str):
     import os, json
     from flask import jsonify
     from mediapipe.python.solutions.pose import PoseLandmark
@@ -162,16 +163,32 @@ def get_feedback_data():
     # For this example, we assume the exercise being performed is "Slow Squats"
     # (change this as needed or fetch it from a different source)
     from hard_coded_exercises import get_exercise_by_name, get_joint_angle_from_exercise
-    exercise = get_exercise_by_name("Slow Squats")
+    # exercise_name = request.args.get("exercise", "Slow Squats")
+    exercise = get_exercise_by_name(exercise_name)
     
-    # According to generate_frames(), the angles list is ordered as:
-    # [left_arm_angle, right_arm_angle, left_leg_angle, right_leg_angle]
-    # For "Slow Squats", we are interested in the knee angles.
     try:
-        measured = {
-            PoseLandmark.RIGHT_KNEE: angles[3],
-            PoseLandmark.LEFT_KNEE: angles[2]
-        }
+        if exercise_name == "Slow Squats":
+            measured = {
+                PoseLandmark.RIGHT_KNEE: angles[3],
+                PoseLandmark.LEFT_KNEE: angles[2]
+            }
+        elif exercise_name == "Hamstring Stretch":
+            measured = {
+                PoseLandmark.RIGHT_KNEE: angles[3],
+                PoseLandmark.LEFT_KNEE: angles[2],
+                PoseLandmark.LEFT_ELBOW: angles[0],
+                PoseLandmark.RIGHT_ELBOW: angles[1]
+            }
+        elif exercise_name == "Wrist Flexion":
+            measured = {
+                PoseLandmark.RIGHT_WRIST: angles[1],
+                PoseLandmark.LEFT_WRIST: angles[0]
+            }
+        else:
+            measured = {
+                PoseLandmark.RIGHT_KNEE: angles[3],
+                PoseLandmark.LEFT_KNEE: angles[2]
+            }
     except IndexError:
         return jsonify({
             "position": None,

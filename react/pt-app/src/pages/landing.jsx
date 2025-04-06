@@ -16,7 +16,6 @@ const Landing = () => {
         <div className='menu'>
             
                 <Grid></Grid>
- 
                 
         </div>
         <div className='img-container'>

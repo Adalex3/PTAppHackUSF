@@ -65,12 +65,12 @@ const Grid = () => {
       </div>
 
       <div className="buttondiv">
-        <Link
-          className="button1"
-          to="/lessons"
-        >
-          <div className="label1"> Resume Lessons</div>
-        </Link>
+      <Link
+        className="button1"
+        to={`/lessons?exercise=${selectedTop}&reps=${selectedBottom}`}
+      >
+        <div className="label1"> Resume Lessons</div>
+      </Link>
     </div>
     </div>  
       </>       

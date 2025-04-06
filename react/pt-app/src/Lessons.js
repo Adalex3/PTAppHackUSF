@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import exercises from './exercises.js'; // Import the exercise objects
 import { Routes, Route, Link } from 'react-router-dom';
 import './Lessons.css';
@@ -6,6 +7,12 @@ import logo from './logo.svg';
 import VideoPopup from './components/VideoPopup.js';
 
 function Lessons() {
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const exerciseParameterIndex = params.get('exercise') ?? 0; // fallback to 0 if null
+  const exerciseName = ["Slow Squats", "Hamstring Stretch", "Wrist Flexion"][exerciseParameterIndex];
+
   // Default header content before transitioning to any exercise
   const defaultTitle = "Let's begin!";
   const defaultDescription = "Here is some information about the exercise that you are doing";
@@ -107,17 +114,17 @@ function Lessons() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const res = await fetch('http://127.0.0.1:5001/pose_feedback');
+        const res = await fetch(`http://127.0.0.1:5001/pose_feedback?exercise=${encodeURIComponent(exerciseName)}`);
         const data = await res.json();
         if (data != null) {
-          setFeedback(data)
+          setFeedback(data);
         }
       } catch (err) {
         console.error('Fetch failed:', err);
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [exerciseName]);
 
 
   // CENTER THE FOOTAGE
