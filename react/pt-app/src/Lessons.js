@@ -84,14 +84,12 @@ function Lessons() {
       try {
         const res = await fetch('http://127.0.0.1:5001/is_in_frame');
         const data = await res.json();
-        console.log("IN FRAME: " + data["in_frame"]);
         if (data["in_frame"] != null) {
-          console.log("IN FRAME2222: " + data["in_frame"]);
           setIsUserInView(data["in_frame"]);
         }
       } catch (err) {
         // Optional: log silently or not at all
-        // console.error('Fetch failed:', err);
+        console.error('Fetch failed:', err);
       }
     }, 1000);
     return () => clearInterval(interval);
