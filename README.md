@@ -12,7 +12,7 @@ This project is a smart movement and rehabilitation assistant designed to guide 
 - Use GPT-4o to generate a personalized plan based on your needs
 
 ### Step 2: Perform the Exercises with Camera Feedback
-- The app uses YOLO and/or OpenCV for pose estimation
+- The app uses Mediapipe and OpenCV for pose estimation
 - You’ll be guided through hardcoded exercises that we’ve trained the app to understand
 - Real-time feedback will tell you **what’s wrong** and **how to fix it**, with actionable and specific suggestions
 
@@ -43,7 +43,7 @@ In the future, we’ll allow you to run the pose estimation on a Raspberry Pi wi
 ## Tech Stack
 
 - **Frontend**: React, Tailwind CSS, Recharts or Chart.js
-- **Pose Estimation**: YOLO, OpenCV (Python)
+- **Pose Estimation**: Mediapipe, OpenCV (Python)
 - **Backend**: Firebase (for auth and storage), Flask or FastAPI (for GPT integration)
 - **Video Handling**: FFmpeg or MediaRecorder API
 - **Optional Hardware**: Raspberry Pi 4, Camera Module v2
